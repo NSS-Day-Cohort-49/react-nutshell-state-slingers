@@ -1,4 +1,4 @@
-// Luz Angelique Madrazo || Component responsible for providing data to other components than need them.
+// Luz Angelique Madrazo || Component responsible for providing data to other components than need them and contain the HTTP fetch calls:
 
 import React, { useState, createContext } from "react";
 
@@ -23,6 +23,5 @@ export const MessageProvider = (props) => {
         }}>
             {props.children}
         </MessageContext.Provider>
-    )
-
+    );
 };

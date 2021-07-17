@@ -6,8 +6,11 @@ import "./Message.css";
 
 
 export const MessageCard = ({ message }) => (
+    <div className="msg__wrapper">
     <section className="message">
-        <h3 className="message__body">{message.body}</h3>
-        <div className="message__sender">Sent By: { message.user.username }</div>
+        <div className="message__div"><img className="message__senderPhoto" src={message.user.userPhoto}></img>
+        <div className="message__sender">{ message.user.username }</div></div>
+        <p className="message__body">{message.body}</p>  
     </section>
+    </div>
 );
