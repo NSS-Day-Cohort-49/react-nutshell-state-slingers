@@ -34,6 +34,7 @@
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-radius: 10px;
+    cursor: pointer;
 }
 
 .message:before {
@@ -71,4 +72,49 @@
     margin-top: 0.5em;
     font-size: 25px;
     text-align: center;
+}
+
+/* Styling for message input */
+
+.field {
+    display: flex;
+    margin: 2em 0em 4em 25em;
+}
+
+.label {
+    margin: 4em 1em 2em 0em;
+}
+
+.content {
+    border-radius: 10px;
+    margin-top: 2em;
+    max-width: 50%;
+    transition: border-color .15s ease-in-out;
+    box-shadow: .15s ease-in-out; 
+    outline: 0; 
+    /* box-shadow: none; */
+    /* border: none;  */
+    border-bottom: 1px solid #8da2b8; 
+    box-sizing: content-box;
+    background-color: transparent; 
+    overflow-y: hidden; 
+    padding: 1.5rem 0; 
+    resize: none;
+    font-size: 18px;
+}
+
+.sendMsgBut {
+    width: 50px;
+    height: 50px;
+    margin-left: 0.5em;
+    margin-right: 2.2em;
+    float:right;
+    /* margin-bottom: 0em; */
+    cursor: pointer;
+    margin-top: 3.2em;
+    transition: all .2s ease-in-out;
+}
+
+.sendMsgBut:hover {
+    transform: scale(1.3);
 }
