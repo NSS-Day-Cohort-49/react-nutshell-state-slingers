@@ -1,13 +1,23 @@
 .tasks {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .task {
-    flex-basis: 28%;
-    margin: 1em;
-    padding: 1em;
-    border: 1px solid goldenrod;
+  flex-basis: 85%;
+  margin: 1em;
+  padding: 1em;
+  border: .1rem solid rgb(32, 113, 218);
+  border-radius: .6rem;
+  box-shadow: .4rem .4rem .5rem rgba(0, 0, 0, 0.3);
 }
-   
+
+.add-task {
+  margin: .75rem;
+  flex-basis: 30%;
+}
+
+.check__label {
+  margin: 0 .5em;
+}

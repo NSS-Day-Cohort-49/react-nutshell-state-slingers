@@ -2,6 +2,7 @@ import React from "react"
 import { Route } from "react-router-dom"
 import { TaskProvider } from "./tasks/TaskProvider"
 import { TaskList } from "./tasks/TaskList"
+import { TaskForm } from "./tasks/TaskForm"
 
 export const ApplicationViews = () => {
   return (
@@ -18,8 +19,11 @@ export const ApplicationViews = () => {
       </Route>
       
       <TaskProvider>
-        <Route path="/tasks">
+        <Route exact path="/tasks">
           <TaskList />
+        </Route>
+        <Route exact path="/tasks/create">
+          <TaskForm />
         </Route>
       </TaskProvider>
 
