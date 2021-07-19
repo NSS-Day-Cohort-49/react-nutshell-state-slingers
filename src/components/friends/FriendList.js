@@ -1,16 +1,18 @@
+//Created by Michael Trevino. This module creates part of the HTML for the friends component by rendering one or more friend cards, passing each card a matched friend obj
 import React from "react"
 import { useContext, useEffect } from "react"
 import { FriendContext } from "./FriendProvider"
 import { FriendCard } from "./FriendCard"
+import { UserContext } from "../users/UserProvider"
 
 export const FriendList = () => {
 
-    const { friends, getFriends } = useContext(FriendContext)
-    const { user, getUsers } = useContext(userContext)
+    //Imports users in order to find match to friendId
+    const  { friends, getFriends } = useContext(FriendContext)
+    const { users, getUsers } = useContext(UserContext)
 
-
-    
     useEffect(() => {
+        getUsers()
         getFriends()
     }, [])
 
@@ -20,7 +22,9 @@ export const FriendList = () => {
             <h2 className="friends__header">Friends</h2>
                 {friends.map(friend=> {
                     if (friend.userId === parseInt(sessionStorage.getItem("nutshell_user"))) {
-                        return <FriendCard key={friend.id} friend={friend} />        
+                        //
+                        const friendMatch = users.find(user => user.id === friend.friendId)
+                        return <FriendCard key={friend.id} friend={friendMatch} />        
                     }
                 })}
         </div>
