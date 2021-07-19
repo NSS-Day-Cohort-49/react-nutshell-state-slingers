@@ -7,9 +7,35 @@
   }
   
   .article {
-      flex-basis: 80%;
+      flex-basis: 85%;
       margin: 1em;
       padding: 1em;
-      border: 1px solid goldenrod;
-      background-color:cornflowerblue;
+      border: 2px solid rgb(40, 45, 48);
+      background: rgb(121, 179, 202);
+      border-radius: 50px;
   }
+  .delete__article {
+    background-color: #5bb1c7;
+    border-radius: 50px;
+    border: 1px solid black;
+    ;
+}
+
+.delete__article:hover {
+    border: 2px solid rgb(48, 126, 216);
+    color: whitesmoke;
+    background-color: rgb(43, 41, 41);
+}
+
+.edit__article {
+    background-color: #5bb1c7;
+    border-radius: 50px;
+    border: 1px solid black;
+    ;
+}
+
+.edit__article:hover {
+    border: 2px solid rgb(48, 126, 216);
+    color: whitesmoke;
+    background-color: rgb(43, 41, 41);
+}

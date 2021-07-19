@@ -2,7 +2,6 @@ import React from "react"
 import { Route } from "react-router-dom"
 import { ArticleProvider } from "./articles/ArticleProvider"
 import { ArticleList } from "./articles/ArticleList"
-import { Route } from "react-router-dom";
 import { MessageProvider } from "./messages/MessageProvider";
 import { MessageList } from "./messages/MessageList";
 
