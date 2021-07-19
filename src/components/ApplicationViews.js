@@ -2,6 +2,7 @@ import React from "react"
 import { Route } from "react-router-dom";
 import { MessageProvider } from "./messages/MessageProvider";
 import { MessageList } from "./messages/MessageList";
+import { FriendProvider } from "./friends/FriendProvider";
 
 export const ApplicationViews = () => {
   return (
