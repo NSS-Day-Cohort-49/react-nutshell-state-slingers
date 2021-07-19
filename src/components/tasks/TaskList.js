@@ -15,7 +15,7 @@ export const TaskList = () => {
 
   return (
     <>
-      <h1>Tasks</h1>
+      <h1 className="task-header">Tasks</h1>
       <div className="tasks">
 
       <button className="btn btn-primary add-task" onClick={() => history.push("/tasks/create")}>

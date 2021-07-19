@@ -32,7 +32,7 @@ export const TaskForm = () => {
   const handleSaveTask = (event) => {
     event.preventDefault() //Prevents the browser from submitting the form
 
-    const userId = parseInt(task.userId)
+    const userId = parseInt(sessionStorage.nutshell_user)
 
       const newTask = {
         name: task.name,
@@ -60,7 +60,7 @@ export const TaskForm = () => {
             <input type="text" id="completionDate" required autoFocus className="form-control" placeholder="00/00/00"  value={task.completionDate} onChange={handleControlledInputChange} />
           </div>
         </fieldset>
-        <fieldset>
+        {/* <fieldset>
           <div className="form-group">
             <label htmlFor="userId">User: </label>
             <select name="userId" id="userId" className="form-control" value={task.userId} onChange={handleControlledInputChange}>
@@ -70,7 +70,7 @@ export const TaskForm = () => {
               <option key="3" value="3">User 3</option>
             </select>
           </div>
-        </fieldset>
+        </fieldset> */}
         <button className="btn btn-primary" onClick={handleSaveTask}>
           Save Task
         </button>

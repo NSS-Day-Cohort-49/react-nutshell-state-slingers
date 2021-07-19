@@ -15,8 +15,8 @@ export const TaskCard = ({ task }) => {
         <h3 className="task__name">{task.name}</h3>
         <div className="task__date">{task.completionDate}</div>
         <fieldset>
-        <input type="checkbox" name="complete__task" id="task"></input>
-        <label className="check__label" htmlFor="complete__task">Task Complete</label>
+        <input type="checkbox" name="complete__task" id={`task__${task.id}`}></input>
+          <label className="check__label" htmlFor={`task__${task.id}`}>Task Complete</label>
         </fieldset>
         <button className="btn btn-primary" onClick={()=>{handleDeleteTask()}}>Delete Task</button>
       </section>

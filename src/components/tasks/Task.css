@@ -1,3 +1,8 @@
+.task-header {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .tasks {
   display: flex;
   flex-wrap: wrap;
@@ -8,7 +13,7 @@
   flex-basis: 85%;
   margin: 1em;
   padding: 1em;
-  border: .1rem solid rgb(32, 113, 218);
+  border: .1rem solid #007bff;
   border-radius: .6rem;
   box-shadow: .4rem .4rem .5rem rgba(0, 0, 0, 0.3);
 }
