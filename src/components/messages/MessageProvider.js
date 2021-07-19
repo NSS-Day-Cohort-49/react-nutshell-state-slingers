@@ -37,7 +37,7 @@ export const MessageProvider = (props) => {
             method: "DELETE"
         })
             .then(getMessages)
-    };
+    };  
 
     const updateMessage = (message) => {
         return fetch(`http://localhost:8088/messages/${message.id}`, {

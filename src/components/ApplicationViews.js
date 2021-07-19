@@ -15,10 +15,10 @@ export const ApplicationViews = () => {
       </Route>
 
       <MessageProvider>
-        <Route path="/messages">
-          {/* Render the component for the messages */}
-          <MessageList />
-        </Route>
+          <Route path="/messages">
+            {/* Render the component for the messages */}
+            <MessageList />
+          </Route>
       </MessageProvider>
 
       <Route path="/tasks">
