@@ -2,6 +2,9 @@ import React from "react"
 import { Route } from "react-router-dom"
 import { ArticleProvider } from "./articles/ArticleProvider"
 import { ArticleList } from "./articles/ArticleList"
+import { Route } from "react-router-dom";
+import { MessageProvider } from "./messages/MessageProvider";
+import { MessageList } from "./messages/MessageList";
 
 export const ApplicationViews = () => {
   return (
@@ -16,9 +19,14 @@ export const ApplicationViews = () => {
       <Route path="/friends">
         {/* Render the component for list of friends */}
       </Route>
-      <Route path="/messages">
-        {/* Render the component for the messages */}
-      </Route>
+
+      <MessageProvider>
+          <Route path="/messages">
+            {/* Render the component for the messages */}
+            <MessageList />
+          </Route>
+      </MessageProvider>
+
       <Route path="/tasks">
         {/* Render the component for the user's tasks */}
       </Route>

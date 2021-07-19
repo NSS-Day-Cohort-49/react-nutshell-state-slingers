@@ -1,0 +1,149 @@
+/* Message Cards Styling */
+
+* {
+    font-family: 'Merienda', cursive;
+}
+
+.messageHeader {
+    font-size: 50px;
+    margin: 2em 0 2em 12.5em;
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    margin-left: 30em;
+    margin-top: 5em;
+}
+
+.msg__wrapper {
+    margin: 2em;
+}
+
+.message__div {
+    display: flex;
+}
+
+.message {
+    padding: 1.5em;
+    border: 2px solid rgb(40, 45, 48);
+    width: 500px;
+    height: 250px;
+    background: rgb(121, 179, 202);
+    position: relative;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.message:before {
+    content: "";
+    position: absolute;
+    right: 100%;
+    top: 110px;
+    width: 100px;
+    height: 29px;
+    border-top: 13px solid transparent;
+    border-right: 26px solid rgb(121, 179, 202);
+    border-bottom: 13px solid transparent;
+}
+
+.message:hover {
+    background-color: rgb(158, 191, 199);
+    box-shadow: 0.3rem 0.3rem 0.5rem rgb(61, 60, 60);
+    border: 3px solid rgb(121, 179, 202);
+}
+
+.message__senderPhoto {
+    width: 50px;
+    height: 50px;
+    border-radius: 30px;
+    border: 1px solid rgb(66, 87, 92);
+}
+
+.message__sender {
+    margin-left: 0.5em;
+    margin-top: 0.5em;
+    font-weight: bold;
+}
+
+.message__body {
+    margin-top: 0.5em;
+    font-size: 25px;
+    text-align: center;
+}
+
+.msg__buttons {
+    margin-left: 18em;
+}
+
+.edit__msg {
+    margin-right: 1em;
+    background-color: #5bb1c7;
+    border-radius: 50px;
+    border: 1px solid black;
+}
+
+.edit__msg:hover {
+    border: 2px solid rgb(48, 126, 216);
+    color: whitesmoke;
+    background-color: rgb(43, 41, 41);
+}
+
+.delete__msg {
+    background-color: #5bb1c7;
+    border-radius: 50px;
+    border: 1px solid black;
+}
+
+.delete__msg:hover {
+    border: 2px solid rgb(48, 126, 216);
+    color: whitesmoke;
+    background-color: rgb(43, 41, 41);
+}
+
+/* Styling for message input */
+
+.field {
+    display: flex;
+    margin: 2em 0em 4em 25em;
+}
+
+.label {
+    margin: 4em 1em 2em 0em;
+}
+
+.content {
+    border-radius: 10px;
+    margin-top: 2em;
+    max-width: 50%;
+    transition: border-color .15s ease-in-out;
+    box-shadow: .15s ease-in-out; 
+    outline: 0; 
+    /* box-shadow: none; */
+    /* border: none;  */
+    border-bottom: 5px solid #8da2b8; 
+    box-sizing: content-box;
+    background-color: transparent; 
+    overflow-y: hidden; 
+    padding: 1.5rem 0; 
+    resize: none;
+    font-size: 18px;
+}
+
+.sendMsgBut {
+    width: 50px;
+    height: 50px;
+    margin-left: 0.5em;
+    margin-right: 2.2em;
+    float:right;
+    /* margin-bottom: 0em; */
+    cursor: pointer;
+    margin-top: 3.2em;
+    transition: all .2s ease-in-out;
+}
+
+.sendMsgBut:hover {
+    transform: scale(1.3);
+}
