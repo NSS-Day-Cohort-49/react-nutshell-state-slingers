@@ -1,0 +1,15 @@
+/* Created by: Holly | Purpose: Styling of Article Elements */
+
+.articles {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .article {
+      flex-basis: 80%;
+      margin: 1em;
+      padding: 1em;
+      border: 1px solid goldenrod;
+      background-color:cornflowerblue;
+  }
