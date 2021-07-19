@@ -1,6 +1,7 @@
 import React from "react"
 import { Route } from "react-router-dom";
 import { MessageProvider } from "./messages/MessageProvider";
+import { UserProvider } from "./users/UserProvider";
 import { MessageList } from "./messages/MessageList";
 
 export const ApplicationViews = () => {
@@ -15,10 +16,12 @@ export const ApplicationViews = () => {
       </Route>
 
       <MessageProvider>
+        <UserProvider>
           <Route path="/messages">
             {/* Render the component for the messages */}
             <MessageList />
           </Route>
+        </UserProvider>
       </MessageProvider>
 
       <Route path="/tasks">
