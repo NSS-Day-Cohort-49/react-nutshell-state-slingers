@@ -36,12 +36,13 @@ export const MessageList = () => {
     };
 
     const saveNewMessage = () => {
-        let userFound = messages.find((message) => {
+        let userMessage = messages.find((message) => {
             if (message.user.id === parseInt(sessionStorage.getItem("nutshell_user"))) {
                 return message.user
             }
        });
-       message.userId = userFound.id;
+       console.log("userFound", userFound)
+       message.userId = userMessage.user.id;
        addMessage(message);
        alert("Message has been sent! 😀");
 
