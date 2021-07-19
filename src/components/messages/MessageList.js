@@ -41,7 +41,6 @@ export const MessageList = () => {
                 return message.user
             }
        });
-      
        message.userId = userMessage.user.id;
        addMessage(message);
        alert("Message has been sent! 😀");

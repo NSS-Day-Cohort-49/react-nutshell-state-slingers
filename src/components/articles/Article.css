@@ -14,11 +14,16 @@
       background: rgb(121, 179, 202);
       border-radius: 50px;
   }
+  .article__btn{
+      display: flex;
+      align-content: flex-end;
+  }
+
   .delete__article {
     background-color: #5bb1c7;
     border-radius: 50px;
     border: 1px solid black;
-    ;
+    display: flex;
 }
 
 .delete__article:hover {
