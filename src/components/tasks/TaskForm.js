@@ -1,3 +1,6 @@
+//Kipp Minton
+//Component for rendering task form; currently only creates and saves new tasks
+
 import React, { useContext, useState } from "react"
 import { TaskContext } from "./TaskProvider"
 import "./Task.css"
@@ -11,8 +14,9 @@ export const TaskForm = () => {
   const [task, setTask] = useState({
     name: "",
     userId: 0,
-    completionDate: "",
-    isCompleted: false
+    deadline: "",
+    isCompleted: false,
+    completeDate: 0
   });
 
   const history = useHistory();
@@ -37,8 +41,9 @@ export const TaskForm = () => {
       const newTask = {
         name: task.name,
         userId: userId,
-        completionDate: task.completionDate,
-        isCompleted: task.isCompleted
+        deadline: task.deadline,
+        isCompleted: task.isCompleted,
+        completeDate: task.completeDate
       }
       addTask(newTask)
         .then(() => history.push("/tasks"))
@@ -56,21 +61,10 @@ export const TaskForm = () => {
         </fieldset>
         <fieldset>
           <div className="form-group">
-            <label htmlFor="date">Complete by Date:</label>
-            <input type="text" id="completionDate" required autoFocus className="form-control" placeholder="00/00/00"  value={task.completionDate} onChange={handleControlledInputChange} />
+            <label htmlFor="deadline">Complete by Date:</label>
+            <input type="text" id="deadline" required autoFocus className="form-control" placeholder="00/00/00"  value={task.deadline} onChange={handleControlledInputChange} />
           </div>
         </fieldset>
-        {/* <fieldset>
-          <div className="form-group">
-            <label htmlFor="userId">User: </label>
-            <select name="userId" id="userId" className="form-control" value={task.userId} onChange={handleControlledInputChange}>
-              <option value="0">Select a user</option>
-              <option key="1" value="1">User 1</option>
-              <option key="2" value="2">User 2</option>
-              <option key="3" value="3">User 3</option>
-            </select>
-          </div>
-        </fieldset> */}
         <button className="btn btn-primary" onClick={handleSaveTask}>
           Save Task
         </button>

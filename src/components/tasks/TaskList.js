@@ -1,3 +1,6 @@
+//Kipp Minton
+//Component displays list of current user's individual task cards
+
 import React, { useContext, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { TaskContext } from './TaskProvider'
@@ -13,6 +16,7 @@ export const TaskList = () => {
     getTasks()
   }, [])
 
+
   return (
     <>
       <h1 className="task-header">Tasks</h1>
@@ -23,7 +27,11 @@ export const TaskList = () => {
       </button>
         {
           tasks.map(task => {
+            let taskUser = task.userId
+            let sessionUser = parseInt(sessionStorage.getItem("nutshell_user"))
+            if(taskUser === sessionUser && task.isCompleted === false){
             return <TaskCard key={task.id} task={task} />
+            }
           })
         }
       </div>

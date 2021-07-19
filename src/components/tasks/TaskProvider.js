@@ -1,5 +1,5 @@
-// Created by Kipp Minton
-// Module creates all functions for retrieving, adding, editing and deleting data related to task features as well as setting application state related to tasks
+// Kipp Minton
+// Module contains all functions for retrieving, adding, editing and deleting data related to task features as well as setting application state related to tasks
 
 import React, { useState, createContext } from 'react'
 
@@ -32,7 +32,7 @@ export const TaskProvider = (props) => {
     .then(getTasks)
   }
 
-  const completeTask = taskObj => {
+  const editTask = taskObj => {
     return fetch(`http://localhost:8088/tasks/${taskObj.id}`, {
       method: "PUT",
       headers: {
@@ -45,7 +45,7 @@ export const TaskProvider = (props) => {
 
   return (
     <TaskContext.Provider value={{
-      tasks, getTasks, addTask, deleteTask, completeTask
+      tasks, getTasks, addTask, deleteTask, editTask
     }}>
       {props.children}
     </TaskContext.Provider>
