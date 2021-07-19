@@ -4,12 +4,23 @@ import { FriendContext } from "./FriendProvider"
 import "./Friends.css"
 //Get user data to match name to passed friend ID
 
-const { getFriendById, deleteFriend } = useContext
+export const FriendCard = ({ friend }) => {
+    
+    const { deleteFriend } = useContext(FriendContext)
+    
+    const handleDelete = (friendId) => {
+        deleteFriend(friendId)
+    }
 
-export const FriendCard = ({ friend }) => (
+    return (
+        <>
     <section className="friend">
         <h3 className="friend__name">
             You are friends with {friend.name}
         </h3>
+        <button onClick={handleDelete(friend.id)}>Remove Friend</button>
         </section>
-)
+        </>
+    )
+}
+
