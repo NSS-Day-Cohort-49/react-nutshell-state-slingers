@@ -147,3 +147,30 @@
 .sendMsgBut:hover {
     transform: scale(1.3);
 }
+
+/* Styling for updating message */
+
+.update__message {
+    margin-left: 3em;
+    display: flex;
+}
+
+.message__body {
+    border-radius: 20px;
+}
+
+.update__button {
+    background-color: #5bb1c7;
+    border-radius: 50px;
+    border: 1px solid black;
+    margin-left: 1em;
+    margin-top: 2.3em;
+    height: 30px;
+    width: 50px;
+}
+
+.update__button:hover {
+    border: 2px solid rgb(48, 126, 216);
+    color: whitesmoke;
+    background-color: rgb(43, 41, 41);
+}

@@ -50,7 +50,6 @@ export const MessageList = () => {
         setMessage(newMessage)
     };
 
-
     return (
         <>
             <h2 className="messageHeader">Messages</h2>
