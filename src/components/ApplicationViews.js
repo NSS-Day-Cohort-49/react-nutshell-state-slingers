@@ -1,6 +1,7 @@
 import React from "react"
 import { Route } from "react-router-dom";
 import { MessageProvider } from "./messages/MessageProvider";
+import { UserProvider } from "./users/UserProvider";
 import { MessageList } from "./messages/MessageList";
 import { FriendProvider } from "./friends/FriendProvider";
 import { FriendList } from "./friends/FriendList";
@@ -23,10 +24,12 @@ export const ApplicationViews = () => {
       </FriendProvider>
 
       <MessageProvider>
+        <UserProvider>
           <Route path="/messages">
             {/* Render the component for the messages */}
             <MessageList />
           </Route>
+        </UserProvider>
       </MessageProvider>
 
       <Route path="/tasks">
