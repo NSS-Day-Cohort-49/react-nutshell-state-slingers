@@ -45,8 +45,9 @@ export const MessageList = () => {
        addMessage(message);
        alert("Message has been sent! 😀");
 
-       let messageInput = document.querySelector("#body");
-       messageInput.value = "";
+        let newMessage = { ...message }
+        newMessage.body = '';
+        setMessage(newMessage)
     };
 
 
@@ -63,7 +64,7 @@ export const MessageList = () => {
             </div>
             <div className="field">
                 <label className="label" htmlFor="messageContent">New Message:</label>
-                <textarea id="body" type="text" name="messageContent" className="content" rows="1" cols="60"placeholder="Type Message..." onChange={(event) => {handleControlledInputChange(event)}}>
+                <textarea id="body" type="text" name="messageContent" className="content" rows="1" cols="60" placeholder="Type Message..." onChange={(event) => {handleControlledInputChange(event)}} value={message.body}>
                 </textarea>
                 <img className="sendMsgBut" src="https://img.icons8.com/color/60/000000/filled-sent.png" onClick={() => {saveNewMessage()}}/>
             </div>
