@@ -5,17 +5,24 @@ import { ArticleList } from "./articles/ArticleList"
 import { MessageProvider } from "./messages/MessageProvider";
 import { UserProvider } from "./users/UserProvider";
 import { MessageList } from "./messages/MessageList";
-
+import { ArticleForm } from "./articles/ArticleForm";
 export const ApplicationViews = () => {
   return (
     <>
 
-      <Route exact path="/">
         {/* Render the component for news articles */}
-        <ArticleProvider>
+      <ArticleProvider>
+        <UserProvider>
+          <Route exact path="/">
             <ArticleList />
-        </ArticleProvider>
-      </Route>
+          </Route>
+
+          <Route exact path="/articles/create">
+            <ArticleForm />
+          </Route>
+        </UserProvider>
+      </ArticleProvider>
+
       <Route path="/friends">
         {/* Render the component for list of friends */}
       </Route>

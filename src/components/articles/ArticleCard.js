@@ -1,22 +1,42 @@
 /* Created by: Holly | Purpose: Component to creat items to display for each article created. */
 
-import React from "react"
+import React, { useContext } from "react"
 import "./Article.css"
 import { Link } from "react-router-dom"
+import { ArticleContext } from "./ArticleProvider";
+import { useHistory } from "react-router-dom";
 
-export const ArticleCard = ({article}) => (
-    <section className="article">
-        <h3 className="article__title">
+
+
+
+
+export const ArticleCard = ({article}) => { 
+
+    const { deleteArticle } = useContext(ArticleContext)
+    
+    const history = useHistory();
+
+    const handleDeleteArticle = () => {
+        deleteArticle(article.id)
+        .then(() => {
+          history.push("/")
+        })
+    };
+
+    return(
+        <section className="article">
+            <h3 className="article__title">
             { article.title } 
-        </h3>
+            </h3>
         <div className="article__synopsis">
-        <Link to={{ pathname: "https://www.quantamagazine.org/newfound-wormhole-allows-information-to-escape-black-holes-20171023/"}} target="https://www.quantamagazine.org/newfound-wormhole-allows-information-to-escape-black-holes-20171023/">
-        {article.synopsis}
-        </Link>
+            <Link to={{ pathname: article.url}} target={article.url}>
+            {article.synopsis}
+            </Link>
         </div>
         <div className="article__btn">
         <button className="edit__article">Edit</button>
-        <button className="delete__article" >Delete</button>
+        <button className="delete__article" onClick={() => {handleDeleteArticle()}}>Delete</button>
         </div>
-    </section>
-)
+        </section>
+    )
+};
