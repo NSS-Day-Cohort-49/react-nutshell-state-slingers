@@ -4,7 +4,7 @@ import { FriendContext } from "./FriendProvider"
 import "./Friends.css"
 //Get user data to match name to passed friend ID
 
-export const FriendCard = ({ friend }) => {
+export const FriendCard = ({ user, friend }) => {
 
     const { deleteFriend } = useContext(FriendContext)
     
@@ -16,9 +16,9 @@ export const FriendCard = ({ friend }) => {
         <>
     <section className="friend">
         <h3 className="friend__name">
-            You are friends with {friend.name}
+            You are friends with {user.name}
         </h3>
-        <button onClick={() => {handleDelete(friend.id)}}>Remove Friend</button>
+        <button className ="delete__friend" onClick={handleDelete}>Remove Friend</button>
         </section>
         </>
     )

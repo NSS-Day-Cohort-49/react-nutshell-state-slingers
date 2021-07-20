@@ -32,19 +32,26 @@ export const FriendForm = () => {
 
     const handleClickSaveFriend = (event) => {
             
-        const friendUser = users.find(user => user.name === friend.name)
-        const friendId = friendUser.id
         //Input check to see if ID was captured before saving
-        if (friendId === 0) {
+        const friendUser = users.find(user => user.name === friend.name)
+        if (friendUser === undefined) {
             window.alert("Please enter a valid user as 'Firstname Lastname'")
         } else  {
-                //Post - add
+            const friendId = friendUser.id
+        //Post - add
                 const newFriend = {
                     userId: parseInt(sessionStorage.getItem("nutshell_user")),
                     friendId: friendId  
                 }
                 addFriend(newFriend)
             }
+            const blankFriend = 
+            {
+                userId: 0,
+                friendId: 0,
+                name: ""
+            }
+            setFriend(blankFriend)
         }   
 
     return (

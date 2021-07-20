@@ -24,7 +24,7 @@ export const FriendList = () => {
                     if (friend.userId === parseInt(sessionStorage.getItem("nutshell_user"))) {
                         //
                         const friendMatch = users.find(user => user.id === friend.friendId)
-                        return <FriendCard key={friend.id} friend={friendMatch} />        
+                        return <FriendCard key={friend.id} user={friendMatch} friend={friend} />        
                     }
                 })}
         </div>
