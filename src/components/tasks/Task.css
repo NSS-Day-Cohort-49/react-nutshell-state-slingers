@@ -1,0 +1,28 @@
+.task-header {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.tasks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.task {
+  flex-basis: 85%;
+  margin: 1em;
+  padding: 1em;
+  border: .1rem solid #007bff;
+  border-radius: .6rem;
+  box-shadow: .4rem .4rem .5rem rgba(0, 0, 0, 0.3);
+}
+
+.add-task {
+  margin: .75rem;
+  flex-basis: 30%;
+}
+
+.check__label {
+  margin: 0 .5em;
+}
