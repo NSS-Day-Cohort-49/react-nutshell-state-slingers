@@ -36,15 +36,21 @@ export const MessageList = () => {
     };
 
     const saveNewMessage = () => {
+        if (message.body.length === 0) {
+            alert("Your message cannot be empty! 🙅")
+        } else {
+            message.userId = parseInt(sessionStorage.getItem("nutshell_user"));
+            addMessage(message);
+            alert("Message has been sent! 😀");
+     
+            let newMessage = { ...message }
+            newMessage.body = '';
+            setMessage(newMessage)
+        }
+    };   
 
-       message.userId = parseInt(sessionStorage.getItem("nutshell_user"));
-       addMessage(message);
-       alert("Message has been sent! 😀");
 
-        let newMessage = { ...message }
-        newMessage.body = '';
-        setMessage(newMessage)
-    };    
+    let messageButtons;
 
     return (
         <>
@@ -55,10 +61,12 @@ export const MessageList = () => {
                 {messages.map((message) => {
                     if (message.userId === parseInt(sessionStorage.getItem("nutshell_user"))) {
                         let classUnflipped = "unflippedClass";
-                        return <MessageCard key={message.id} message={message} classProp={classUnflipped} />;
+                        messageButtons = true;
+                        return <MessageCard key={message.id} message={message} classProp={classUnflipped} msgButProp={messageButtons}/>;
                     } else {
                         let classFlipped = "flippedClass";
-                        return <MessageCard key={message.id} message={message} classProp={classFlipped} />;
+                        messageButtons = false;
+                        return <MessageCard key={message.id} message={message} classProp={classFlipped} msgButProp={messageButtons}/>;
                     }
                 })}
             </div>

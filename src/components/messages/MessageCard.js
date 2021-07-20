@@ -10,7 +10,7 @@ import { useHistory} from "react-router-dom";
 
 
 
-export const MessageCard = ({ message, classProp }) => {
+export const MessageCard = ({ message, classProp, msgButProp }) => {
 
     const { deleteMessage, updateMessage, getMessages, messages } = useContext(MessageContext)
     const { users, getUsers } = useContext(UserContext)
@@ -68,10 +68,23 @@ export const MessageCard = ({ message, classProp }) => {
 
     //Edit message function:
     const saveEditMessage = () => {
-        console.log("updated message", updatedMessage)
-        updateMessage(updatedMessage);
-        setUneditedMessage(false);
-        alert("Message Updated! 💌");
+        console.log("updated message", updatedMessage.body.length, 'message', message);
+        if (updatedMessage.body.length === 0) {
+            updatedMessage.body = message.body
+                updateMessage(updatedMessage);
+                setUneditedMessage(false);
+                alert("You cannot save an empty message! 🙅");
+        } else {
+            if (updatedMessage.body === message.body) {
+                updateMessage(updatedMessage);
+                setUneditedMessage(false);
+                alert("You cannot save an empty message! 🙅");
+            } else {
+                updateMessage(updatedMessage);
+                setUneditedMessage(false);
+                alert("Message Updated! 💌");
+            }
+        }
     };
 
     //Text area for message input conditionally rendered whether in unedited or updating state:
@@ -103,16 +116,22 @@ export const MessageCard = ({ message, classProp }) => {
             alert("User added as a friend! 😊")
         }; 
     };
-    
+
     return (
 
         <div className="msg__wrapper">
             <section className={classProp}>
                 <div className="msg__buttons">
-                    <button className="edit__msg" onClick={() => {handleEdit()}}>
-                        Edit
-                    </button>
-                    <button className="delete__msg" onClick={() => {handleDelete()}}>Delete</button>
+                    {
+                        msgButProp ? 
+                            <>
+                                <button className="edit__msg" onClick={() => {handleEdit(message)}}>
+                                    Edit
+                                </button>
+                                <button className="delete__msg" onClick={() => {handleDelete()}}>Delete</button>
+                            </>  
+                        : null
+                    }
                 </div>
                 <div className="message__div">
                     <img className="message__senderPhoto" src={message.user.userPhoto}></img>
@@ -121,101 +140,5 @@ export const MessageCard = ({ message, classProp }) => {
                 {messageInput} 
             </section>
         </div>
-    )
+    );
 };
-
-
-
-
-
-
-
-
-// export const MessageCard = ({ message, classProp }) => {
-
-//     const { deleteMessage, updateMessage, getMessages } = useContext(MessageContext)
-
-//     const [uneditedMessage, setUneditedMessage] = useState({
-//         messageState: false
-//     });
-  
-//     const history = useHistory();
-
-
-//     useEffect(() => {
-//         getMessages();
-//     }, []);
-
-
-//     const handleDelete = () => {
-//       deleteMessage(message.id)
-//       .then(() => {
-//         history.push("/messages")
-//       })
-//       alert("Message has been deleted! 👍")
-//     };
-
-//     const handleEdit = () => {
-//         setUneditedMessage(true)
-//     };
-
-//     const [updatedMessage, setUpdatedMessage] = useState({
-//         id: message.id,
-//         userId: parseInt(sessionStorage.getItem("nutshell_user")),
-//         body: "",
-//         isPrivate: false
-//     });
-
-//     const handleControlledInputChange = (event) => {
-//         /* When changing a state object or array,
-//         always create a copy, make changes, and then set state.*/
-//         const newMessage = { ...updatedMessage }
-//         /* Message is an object with properties.
-//         Set the property to the new value
-//         using object bracket notation. */
-//         newMessage[event.target.id] = event.target.value 
-//         // update state
-//         setUpdatedMessage(newMessage);
-//     };
-
-//     const saveEditMessage = () => {
-//         console.log("updated message", updatedMessage)
-//         updateMessage(updatedMessage);
-//         setUneditedMessage(false);
-//         alert("Message Updated! 💌");
-//     };
-
-//     let messageInput;
-//     if (uneditedMessage === true) {
-//         messageInput = 
-//         <div className="update__message">
-//             <textarea id="body" className="message__body" defaultValue={message.body} onChange={(event) => {handleControlledInputChange(event)}}></textarea>
-//             <button className="update__button" onClick={() => {saveEditMessage()}}>Save</button>                 
-//         </div>
-//     } else {
-//         messageInput = <p className="message__body">{message.body}</p> 
-//     };
-
-    
-//     return (
-
-//         <div className="msg__wrapper">
-//             <section className={classProp}>
-//                 <div className="msg__buttons">
-//                     <button className="edit__msg" onClick={() => {handleEdit()}}>
-//                         Edit
-//                     </button>
-//                     <button className="delete__msg" onClick={() => {handleDelete()}}>Delete</button>
-//                 </div>
-//                 <div className="message__div">
-//                     <img className="message__senderPhoto" src={message.user.userPhoto}></img>
-//                     <div className="message__sender">{ message.user.username }</div>
-//                 </div>
-//                 {messageInput} 
-//             </section>
-//         </div>
-//     )
-// };
-
-
-
