@@ -47,13 +47,12 @@ const [isLoading, setIsLoading] = useState(true);
     setEvent(newEvent)
   }
 
-    
-    const handleClickSaveEvent = (event) => {
-
-        const userId = parseInt(sessionStorage.getItem("nutshell_user"))
-        //Check to see that input has been entered into all fields
-        if (event.name === "" || event.date === "" || event.time === "" || event.location === "") {
-            window.alert("Please fill out all fields")
+  const handleClickSaveEvent = (event) => {
+      
+      const userId = parseInt(sessionStorage.getItem("nutshell_user"))
+      //Check to see that input has been entered into all fields
+      if (event.name === "" || event.date === "" || event.time === "" || event.location === "") {
+          window.alert("Please fill out all fields")
         } else { setIsLoading(true);
             debugger
             //Put - update if eventId already exists/has been passed by params
@@ -62,10 +61,10 @@ const [isLoading, setIsLoading] = useState(true);
             const dateTimeParts = dateString.split(' ')
             const timeParts = dateTimeParts[1].split(':')
             const dateParts = dateTimeParts[0].split('-')
-        
-        const date = new Date(dateParts[2], parseInt(dateParts[1], 10) - 1, dateParts[0], timeParts[0], timeParts[1]);
-        console.log(date.getTime())
-        console.log(date); 
+            
+            const date = new Date(dateParts[2], parseInt(dateParts[1], 10) - 1, dateParts[0], timeParts[0], timeParts[1]);
+            console.log(date.getTime())
+            console.log(date); 
             if (eventId) {
                 updateEvent({
                     id: event.id,
@@ -74,44 +73,56 @@ const [isLoading, setIsLoading] = useState(true);
                     date: event.date.getTime(),
                     location: event.location,
                     user: userId
-
+                    
                 }).then(
                     //Reroute to events list
                     () => history.push(`/events`)
-                )
-            }
-            else {
-                //Post - add
-                debugger
-                //Put - update if eventId already exists/has been passed by params
-                //Parse timestamp from date/time input
-                const dateString = `${event.date} ${event.time}`
-                const dateTimeParts = dateString.split(' ')
-                const timeParts = dateTimeParts[1].split(':')
-                const dateParts = dateTimeParts[0].split('-')
-
-                const date = new Date(dateParts[2], parseInt(dateParts[1], 10) - 1, dateParts[0], timeParts[0], timeParts[1]);
-                console.log(date.getTime())
-                console.log(date); 
-
-                const newEvent = {
-                    name: event.name,
-                    location: event.location,
-                    //Convert date object into timestamp for storage
-                    date: event.date.getTime(),
-                    location: event.location,
-                    user: userId
+                    )
                 }
-                addEvent(newEvent)
-                //Reroute back to event list
-                .then(() => history.push("/events"))
-            }
-        }   
-    }
-
-    if (eventId){
-        return (
-        <>
+                else {
+                    //Post - add
+                    debugger
+                    //Put - update if eventId already exists/has been passed by params
+                    //Parse timestamp from date/time input
+                    const dateString = `${event.date} ${event.time}`
+                    const dateTimeParts = dateString.split(' ')
+                    const timeParts = dateTimeParts[1].split(':')
+                    const dateParts = dateTimeParts[0].split('-')
+                    
+                    const date = new Date(dateParts[2], parseInt(dateParts[1], 10) - 1, dateParts[0], timeParts[0], timeParts[1]);
+                    console.log(date.getTime())
+                    console.log(date); 
+                    
+                    const newEvent = {
+                        name: event.name,
+                        location: event.location,
+                        //Convert date object into timestamp for storage
+                        date: event.date.getTime(),
+                        location: event.location,
+                        user: userId
+                    }
+                    addEvent(newEvent)
+                    //Reroute back to event list
+                    .then(() => history.push("/events"))
+                }
+            }   
+        }
+        //Formats timestamp to date HTML input to set default value of field during edit
+        const formatDateInput = (date) => {
+            const dateObj = new Date(date)
+            const formattedMonth = (dateObj.getMonth()+1).toString().padStart(2, "0")
+            const dateInput = `${dateObj.getFullYear()}-${(dateObj.getMonth()+1).toString().padStart(2,"0")}-${(dateObj.getDate()).toString().padStart(2,"0")}`
+            return dateInput
+        }
+        //Formats timestamp to time HTML input to set default value of field during edit
+        const formatTimeInput = (date) => {
+            const dateObj = new Date(date)
+            const timeInput = `${dateObj.getHours().toString().padStart(2, '0')}:${dateObj.getMinutes().toString().padStart(2, '0')}`
+            return timeInput
+        }
+        if (eventId){
+            return (
+                <>
             <div className="events">
                 <EventCard key={eventId} event={events.find(object => object.id === parseInt(eventId))} />
             </div>
@@ -137,15 +148,15 @@ const [isLoading, setIsLoading] = useState(true);
             <fieldset>
                 <div className="date">
                 <label htmlFor="date">Select a date:</label>
-                <input type="date" id="date" required className="form-control" value={event.date} onChange={handleControlledInputChange}
-                defaultValue={event.date} />
+                <input type="date" id="date" required className="form-control" value={formatDateInput(event.date)} onChange={handleControlledInputChange}
+                defaultValue={formatDateInput(event.date)}/>
                 </div>
             </fieldset>
             <fieldset>
                 <div className="time">
                 <label htmlFor="time">Select a time:</label>
-                <input type="time" id="time" required className="form-control" value={event.time} onChange={handleControlledInputChange}
-                defaultValue={event.time} />
+                <input type="time" id="time" required className="form-control" value={formatTimeInput(event.date)} onChange={handleControlledInputChange}
+                defaultValue={formatTimeInput(event.date)} />
                 </div>
             </fieldset>
             </div></div>
@@ -186,14 +197,14 @@ const [isLoading, setIsLoading] = useState(true);
                 <div className="date">
                 <label htmlFor="date">Select a date:</label>
                 <input type="date" id="date" required className="form-control" value={event.date} onChange={handleControlledInputChange}
-                defaultValue={new Date(event.date).getDate} />
+                defaultValue={(new Date(event.date).getDate())} />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="time">
                 <label htmlFor="time">Select a time:</label>
                 <input type="time" id="time" required className="form-control" value={event.time} onChange={handleControlledInputChange}
-                defaultValue={new Date(event.time).getDate} />
+                defaultValue={(new Date(event.date).getTime())} />
                 </div>
             </fieldset>
             </div></div>
