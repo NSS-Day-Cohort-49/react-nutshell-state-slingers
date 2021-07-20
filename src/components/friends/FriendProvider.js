@@ -26,12 +26,12 @@ export const FriendProvider = (props) => {
     };
 
     const deleteFriend = (id) => {
-        debugger
+        
         return fetch(`http://localhost:8088/friends/${id}`, {
             method: "DELETE"
         })
             .then(getFriends)
-    }
+    }   
 
     const getFriendById = (id) => {
         return fetch(`http://localhost:8088/friends/${id}?_expand=user`)

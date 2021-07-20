@@ -24,6 +24,7 @@ export const FriendList = () => {
                     if (friend.userId === parseInt(sessionStorage.getItem("nutshell_user"))) {
                         //
                         const friendMatch = users.find(user => user.id === friend.friendId)
+                        //Passes both user and friend object for card to reference (card needs user to display & friend to delete)
                         return <FriendCard key={friend.id} user={friendMatch} friend={friend} />        
                     }
                 })}

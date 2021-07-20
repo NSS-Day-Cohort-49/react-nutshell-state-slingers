@@ -2,8 +2,8 @@
 import React, { useContext } from "react"
 import { FriendContext } from "./FriendProvider"
 import "./Friends.css"
-//Get user data to match name to passed friend ID
 
+//Friend card takes user argument to display name and friend argument to delete friends
 export const FriendCard = ({ user, friend }) => {
 
     const { deleteFriend } = useContext(FriendContext)

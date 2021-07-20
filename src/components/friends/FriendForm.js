@@ -6,7 +6,8 @@ import { UserContext } from "../users/UserProvider"
 
 export const FriendForm = () => {
 
-    const { addFriend, } = useContext(FriendContext)
+    //Friends context added to check for friends already existing when adding
+    const { addFriend, friends } = useContext(FriendContext)
     const { users, getUsers } = useContext(UserContext)
     
     const [friend, setFriend] = useState({
@@ -15,6 +16,7 @@ export const FriendForm = () => {
         name: ""
     })
     
+    //Get users to match username to userId
     useEffect(() => {
         getUsers()    
      }, [])
@@ -22,7 +24,7 @@ export const FriendForm = () => {
     //when a field changes, update state. The return will re-render and display based on the values in state
     //Controlled component
     const handleControlledInputChange = (event) => {
-
+            //Make a copy of friend, update with string value from input. Set to state.
             const newFriend = { ...friend }
 
             newFriend[event.target.id] = event.target.value
@@ -31,20 +33,33 @@ export const FriendForm = () => {
     }
 
     const handleClickSaveFriend = (event) => {
-            
+        //Strip whitespace & to lowercase to compare string values
+        const nameValue = (friend.name.toLowerCase().replace(/\s/g, ''))
         //Input check to see if ID was captured before saving
-        const friendUser = users.find(user => user.name === friend.name)
+        let friendUser = users.find(user => user.name.toLowerCase().replace(/\s/g, '') === nameValue)
+        //Check for username match if name match not found
         if (friendUser === undefined) {
-            window.alert("Please enter a valid user as 'Firstname Lastname'")
-        } else  {
-            const friendId = friendUser.id
-        //Post - add
+            friendUser = users.find(user => user.username === nameValue)
+        }
+            //No match by full name or username
+            if (friendUser === undefined) {
+                window.alert("Please enter a valid user's full name or username")
+            }
+            //Check for already existing relationships between input friend and user
+            if (friends.find(friend => (friend.friendId === friendUser.id && friend.userId === parseInt(sessionStorage.getItem("nutshell_user"))))) {
+                window.alert("You are already friends with this user")
+            }
+            //Successful unique match found, add friend relationship
+            else  {
+                const friendId = friendUser.id
+                //Post - add
                 const newFriend = {
                     userId: parseInt(sessionStorage.getItem("nutshell_user")),
                     friendId: friendId  
                 }
                 addFriend(newFriend)
             }
+            //Reset state & input form
             const blankFriend = 
             {
                 userId: 0,
@@ -53,13 +68,13 @@ export const FriendForm = () => {
             }
             setFriend(blankFriend)
         }   
-
+        
     return (
         <form className="friendForm">
           <h2 className="friendForm__title">Add a Friend</h2>
           <fieldset>
             <div className="form-group">
-              <label htmlFor="name">User Full Name: </label>
+              <label htmlFor="name">Enter a user's full name or username: </label>
               <input type="text" id="name" required autoFocus className="form-control" placeholder="Friend name" value={friend.name} onChange={handleControlledInputChange} />
             </div>
           </fieldset>
