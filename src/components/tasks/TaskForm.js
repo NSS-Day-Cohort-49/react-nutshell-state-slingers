@@ -56,13 +56,13 @@ export const TaskForm = () => {
         <fieldset>
           <div className="form-group">
             <label htmlFor="name">Task Name:</label>
-            <input type="text" id="name" required autoFocus className="form-control" placeholder="task name" value={task.name} onChange={handleControlledInputChange} />
+            <input type="text" id="name" required="required" autoFocus className="form-control" placeholder="task name" value={task.name} onChange={handleControlledInputChange} />
           </div>
         </fieldset>
         <fieldset>
           <div className="form-group">
             <label htmlFor="deadline">Complete by Date:</label>
-            <input type="text" id="deadline" required autoFocus className="form-control" placeholder="00/00/00"  value={task.deadline} onChange={handleControlledInputChange} />
+            <input type="date" id="deadline" required="required" className="form-control" value={task.deadline} onChange={handleControlledInputChange} />
           </div>
         </fieldset>
         <button className="btn btn-primary" onClick={handleSaveTask}>
