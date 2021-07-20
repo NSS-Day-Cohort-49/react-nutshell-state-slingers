@@ -83,7 +83,7 @@ export const TaskForm = () => {
   return (
     <>
       <form className="taskForm">
-        <h2 className="taskForm__title">New Task</h2>
+        <h2 className="task-header">New Task</h2>
         <fieldset>
           <div className="form-group">
             <label htmlFor="name">Task Name:</label>
@@ -96,7 +96,7 @@ export const TaskForm = () => {
             <input type="date" id="deadline" required="required" className="form-control" value={task.deadline} onChange={handleControlledInputChange} />
           </div>
         </fieldset>
-        <button className="btn btn-primary" onClick={handleSaveTask}>
+        <button className="task-btn save-btn" onClick={handleSaveTask}>
           Save Task
         </button>
       </form>

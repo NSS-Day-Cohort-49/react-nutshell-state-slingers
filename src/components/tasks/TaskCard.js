@@ -46,10 +46,10 @@ export const TaskCard = ({ task }) => {
           <input type="checkbox" name="complete__task" id={`task__${task.id}`} onChange={(event) => {handleCompleteTask(event)}}></input>
           <label className="check__label" htmlFor={`task__${task.id}`}>Task Complete</label>
         </fieldset>
-        <button className="btn btn-primary" onClick={() => {
+        <button className="task-btn" onClick={() => {
           history.push(`/tasks/edit/${task.id}`)
         }}>Edit Task</button>
-        <button className="btn btn-primary" onClick={()=>{handleDeleteTask()}}>Delete Task</button>
+        <button className="task-btn" onClick={()=>{handleDeleteTask()}}>Delete Task</button>
       </section>
     </>
   )
