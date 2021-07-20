@@ -41,7 +41,7 @@ const [isLoading, setIsLoading] = useState(true);
   const handleControlledInputChange = (clickEvent) => {
     //Modify copy of state based on input change
     const newEvent = { ...event }
-    
+
     newEvent[clickEvent.target.id] = clickEvent.target.value
     // update state
     setEvent(newEvent)
@@ -186,14 +186,14 @@ const [isLoading, setIsLoading] = useState(true);
                 <div className="date">
                 <label htmlFor="date">Select a date:</label>
                 <input type="date" id="date" required className="form-control" value={event.date} onChange={handleControlledInputChange}
-                defaultValue={event.date} />
+                defaultValue={new Date(event.date).getDate} />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="time">
                 <label htmlFor="time">Select a time:</label>
                 <input type="time" id="time" required className="form-control" value={event.time} onChange={handleControlledInputChange}
-                defaultValue={event.time} />
+                defaultValue={new Date(event.time).getDate} />
                 </div>
             </fieldset>
             </div></div>
