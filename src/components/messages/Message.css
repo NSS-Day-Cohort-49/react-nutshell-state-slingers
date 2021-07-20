@@ -99,6 +99,11 @@
     font-weight: bold;
 }
 
+.message__sender:hover {
+    text-decoration: underline;
+    color: #239bb9;
+}
+
 .message__body {
     margin-top: 0.5em;
     font-size: 25px;
