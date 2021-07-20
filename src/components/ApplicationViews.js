@@ -8,28 +8,33 @@ import { MessageList } from "./messages/MessageList";
 import { TaskProvider } from "./tasks/TaskProvider"
 import { TaskList } from "./tasks/TaskList"
 import { TaskForm } from "./tasks/TaskForm"
+import { FriendProvider } from "./friends/FriendProvider";
+import { FriendList } from "./friends/FriendList";
+import { FriendForm } from "./friends/FriendForm";
 
 import { ArticleForm } from "./articles/ArticleForm";
 export const ApplicationViews = () => {
   return (
     <>
+      <UserProvider>
+      <FriendProvider>
+          {/* Render the component for list of friends */}
+        <Route path="/friends">
+          <FriendList />
+          <FriendForm />
+        </Route>
 
-        {/* Render the component for news articles */}
       <ArticleProvider>
-        <UserProvider>
+        {/* Render the component for news articles */}
           <Route exact path="/">
             <ArticleList />
           </Route>
-
           <Route exact path="/articles/create">
             <ArticleForm />
           </Route>
-        </UserProvider>
       </ArticleProvider>
-
-      <Route path="/friends">
-        {/* Render the component for list of friends */}
-      </Route>
+      </FriendProvider>
+      </UserProvider>
 
       <MessageProvider>
         <UserProvider>
