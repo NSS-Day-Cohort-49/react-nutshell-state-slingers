@@ -2,14 +2,15 @@
 
 import React, {useContext, useEffect, useState } from "react"
 import "./Article.css"
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { UserContext } from "../users/UserProvider";
 import { ArticleContext } from "./ArticleProvider";
 
 export const ArticleForm = () => {
-    const { addArticle, getArticles } = useContext(ArticleContext)
+    const { addArticle, getArticles, getArticleById, updateArticle } = useContext(ArticleContext)
     const { users, getUsers } = useContext(UserContext)
     const history = useHistory();
+    const { articleId } = useParams();
 
     const [article, setArticle] = useState({
         userId: 0,
@@ -18,10 +19,22 @@ export const ArticleForm = () => {
         synopsis: "",
         timestamp:""
     });
-
+    const [isLoading, setIsLoading] = useState(true);
+    
     useEffect(() => {
         getArticles()
         .then(getUsers)
+        .then(() =>{
+            if(articleId){
+                getArticleById(articleId)
+                .then(article => {
+                    setArticle(article)
+                    setIsLoading(false)
+                })
+            } else {
+                setIsLoading(false)
+                }
+        })
     },[])
 
     const handleControlledInputChange = (event) => {
@@ -29,22 +42,50 @@ export const ArticleForm = () => {
         saveNewArticle[event.target.id] = event.target.value
         setArticle(saveNewArticle)
     }
-
-    const handleClickSaveArticle = (event) => {
-        event.preventDefault()
-
+    
+    const saveNewArticle = () => {
         const userId = parseInt(sessionStorage.getItem("nutshell_user"))
-
-        const saveNewArticle = {
+        const newArticle = {
             userId: userId,
             url: article.url,
             title: article.title,
             synopsis: article.synopsis,
-            timestamp: new Date().toLocaleDateString()
+            timestamp: new Date()
         }
-        addArticle(saveNewArticle)
+        addArticle(newArticle)
         .then(() => history.push("/"))
     }
+
+    const saveEditArticle = () => {
+        const userId = parseInt(sessionStorage.getItem("nutshell_user"))
+        updateArticle({
+          id: article.id,  
+          userId: userId,
+          url: article.url,
+          title: article.title,
+          synopsis: article.synopsis,
+          timestamp: new Date()
+        })
+        .then(() => history.push("/"))
+      }
+    
+      const handleClickSaveArticle = (event) => {
+        event.preventDefault()
+
+        if (article.url === null || article.title === null || article.synopsis === null) {
+            window.alert("Please complete all fields")
+        } else {
+            setIsLoading(true);
+
+            if (articleId) {
+            //PUT - update
+             saveEditArticle()
+             } else {
+             saveNewArticle()
+            }
+        }
+      }
+      
     return(
         <form className="articleForm">
         <h2 className="articleForm__title">New Article</h2>
@@ -57,15 +98,16 @@ export const ArticleForm = () => {
         <fieldset>
           <div className="form-group">
             <label htmlFor="synopsis">Article Synopsis:</label>
-            <input type="text" id="synopsis" required autoFocus className="form-control" placeholder="Article synopsis" value={article.synopsis} onChange={handleControlledInputChange} />
+            <input type="text" id="synopsis" required className="form-control" placeholder="Article synopsis" value={article.synopsis} onChange={handleControlledInputChange} />
           </div>
         </fieldset>
         <fieldset>
           <div className="form-group">
             <label htmlFor="url">Article URL:</label>
-            <input type="text" id="url" required autoFocus className="form-control" placeholder="Article url" value={article.url} onChange={handleControlledInputChange} />
+            <input type="text" id="url" required className="form-control" placeholder="Article url" value={article.url} onChange={handleControlledInputChange} />
           </div>
         </fieldset>
+        
         
         
         <button className="save__btn__article" onClick={handleClickSaveArticle}>
@@ -74,4 +116,3 @@ export const ArticleForm = () => {
       </form>
     )
 } 
-

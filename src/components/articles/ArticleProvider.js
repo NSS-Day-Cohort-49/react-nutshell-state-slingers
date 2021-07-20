@@ -2,6 +2,7 @@
 
 import React, { useState, createContext } from "react"
 
+
 //This context is imported and used by individual components that need data
 export const ArticleContext = createContext()
 
@@ -14,6 +15,10 @@ export const ArticleProvider = (props) => {
             .then(response => response.json())
             .then(setArticles)
     }
+    const getArticleById = (id) => {
+        return fetch(`http://localhost:8088/articles/${id}?_expand=user`)
+        .then((res) => res.json());
+    };
 
     const addArticle = (articleObj) => {
         return fetch("http://localhost:8088/articles", {
@@ -50,7 +55,7 @@ export const ArticleProvider = (props) => {
     
     return (
         <ArticleContext.Provider value={{
-            articles, getArticles, addArticle, deleteArticle, updateArticle
+            articles, getArticles, addArticle, deleteArticle, updateArticle, getArticleById
         }}>
             {props.children}
         </ArticleContext.Provider>
