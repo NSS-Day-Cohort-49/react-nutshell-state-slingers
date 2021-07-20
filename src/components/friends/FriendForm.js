@@ -44,6 +44,15 @@ export const FriendForm = () => {
             //No match by full name or username
             if (friendUser === undefined) {
                 window.alert("Please enter a valid user's full name or username")
+                //Resets form field, then breaks out of function
+                const blankFriend = 
+                {
+                    userId: 0,
+                    buddyId: 0,
+                    name: ""
+                }
+                setFriend(blankFriend)
+                return
             }
             //Check for already existing relationships between input friend and user
             if (friends.find(friend => (friend.buddyId === friendUser.id && friend.userId === parseInt(sessionStorage.getItem("nutshell_user"))))) {
