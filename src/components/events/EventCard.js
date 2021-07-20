@@ -9,8 +9,8 @@ const formatDate = (date) => {
 export const EventCard = ({ event }) => (
     <section className="event">
         <h3 className="event__name">
-            {event.user.name}'s {event.name}
+            {event?.user?.name}'s {event?.name}
         </h3>
-        <div className="event__details"> At {event.location} on {formatDate(event.date)}</div>
+        <div className="event__details"> At {event?.location} on {formatDate(event?.date)}</div>
     </section>
 )
