@@ -22,7 +22,7 @@ export const TaskList = () => {
       <h1 className="task-header">Tasks</h1>
       <div className="tasks">
 
-      <button className="btn btn-primary add-task" onClick={() => history.push("/tasks/create")}>
+      <button className="add-task" onClick={() => history.push("/tasks/create")}>
         Add New Task
       </button>
         {
