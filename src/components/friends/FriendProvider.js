@@ -25,9 +25,9 @@ export const FriendProvider = (props) => {
         .then(getFriends)
     };
 
-    const deleteFriend = (id) => {
+    const deleteFriend = (friendObjId) => {
         
-        return fetch(`http://localhost:8088/friends/${id}`, {
+        return fetch(`http://localhost:8088/friends/${friendObjId}`, {
             method: "DELETE"
         })
             .then(getFriends)

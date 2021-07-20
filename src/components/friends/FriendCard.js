@@ -18,7 +18,7 @@ export const FriendCard = ({ user, friend }) => {
         <h3 className="friend__name">
             You are friends with {user.name}
         </h3>
-        <button className ="delete__friend" onClick={handleDelete}>Remove Friend</button>
+        <button className ="delete__friend" onClick={() => {handleDelete()}}>Remove Friend</button>
         </section>
         </>
     )

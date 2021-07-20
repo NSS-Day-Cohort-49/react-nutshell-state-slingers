@@ -12,7 +12,7 @@ export const FriendForm = () => {
     
     const [friend, setFriend] = useState({
         userId: 0,
-        friendId: 0,
+        buddyId: 0,
         name: ""
     })
     
@@ -46,16 +46,16 @@ export const FriendForm = () => {
                 window.alert("Please enter a valid user's full name or username")
             }
             //Check for already existing relationships between input friend and user
-            if (friends.find(friend => (friend.friendId === friendUser.id && friend.userId === parseInt(sessionStorage.getItem("nutshell_user"))))) {
+            if (friends.find(friend => (friend.buddyId === friendUser.id && friend.userId === parseInt(sessionStorage.getItem("nutshell_user"))))) {
                 window.alert("You are already friends with this user")
             }
             //Successful unique match found, add friend relationship
             else  {
-                const friendId = friendUser.id
+                const buddyId = friendUser.id
                 //Post - add
                 const newFriend = {
                     userId: parseInt(sessionStorage.getItem("nutshell_user")),
-                    friendId: friendId  
+                    buddyId: buddyId  
                 }
                 addFriend(newFriend)
             }
@@ -63,7 +63,7 @@ export const FriendForm = () => {
             const blankFriend = 
             {
                 userId: 0,
-                friendId: 0,
+                buddyId: 0,
                 name: ""
             }
             setFriend(blankFriend)

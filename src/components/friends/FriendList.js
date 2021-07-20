@@ -7,13 +7,13 @@ import { UserContext } from "../users/UserProvider"
 
 export const FriendList = () => {
 
-    //Imports users in order to find match to friendId
+    //Imports users in order to find match to buddyId
     const  { friends, getFriends } = useContext(FriendContext)
     const { users, getUsers } = useContext(UserContext)
 
     useEffect(() => {
-        getUsers()
-        getFriends()
+        getUsers().then(
+        getFriends)
     }, [])
 
     return (
@@ -23,7 +23,7 @@ export const FriendList = () => {
                 {friends.map(friend=> {
                     if (friend.userId === parseInt(sessionStorage.getItem("nutshell_user"))) {
                         //
-                        const friendMatch = users.find(user => user.id === friend.friendId)
+                        const friendMatch = users.find(user => user.id === friend.buddyId)
                         //Passes both user and friend object for card to reference (card needs user to display & friend to delete)
                         return <FriendCard key={friend.id} user={friendMatch} friend={friend} />        
                     }
