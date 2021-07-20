@@ -37,14 +37,14 @@ export const MessageList = () => {
 
     const saveNewMessage = () => {
 
-       message.userId = sessionStorage.getItem("nutshell_user");
+       message.userId = parseInt(sessionStorage.getItem("nutshell_user"));
        addMessage(message);
        alert("Message has been sent! 😀");
 
         let newMessage = { ...message }
         newMessage.body = '';
         setMessage(newMessage)
-    };
+    };    
 
     return (
         <>
@@ -52,10 +52,15 @@ export const MessageList = () => {
 
             <div className="messages">
                 {console.log("MessageList - Render: messages", messages)}
-                    {messages.map((message) => {
-                        return <MessageCard key={message.id} message={message} />;
-                    })
-                }
+                {messages.map((message) => {
+                    if (message.userId === parseInt(sessionStorage.getItem("nutshell_user"))) {
+                        let classUnflipped = "unflippedClass";
+                        return <MessageCard key={message.id} message={message} classProp={classUnflipped} />;
+                    } else {
+                        let classFlipped = "flippedClass";
+                        return <MessageCard key={message.id} message={message} classProp={classFlipped} />;
+                    }
+                })}
             </div>
             <div className="field">
                 <label className="label" htmlFor="messageContent">New Message:</label>

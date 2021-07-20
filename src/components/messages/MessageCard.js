@@ -7,7 +7,7 @@ import { useHistory} from "react-router-dom";
 
 
 
-export const MessageCard = ({ message }) => {
+export const MessageCard = ({ message, classProp }) => {
 
     const { deleteMessage, updateMessage, getMessages } = useContext(MessageContext)
 
@@ -76,7 +76,7 @@ export const MessageCard = ({ message }) => {
     return (
 
         <div className="msg__wrapper">
-            <section className="message">
+            <section className={classProp}>
                 <div className="msg__buttons">
                     <button className="edit__msg" onClick={() => {handleEdit()}}>
                         Edit
