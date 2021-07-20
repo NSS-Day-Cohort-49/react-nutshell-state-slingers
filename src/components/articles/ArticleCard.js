@@ -34,7 +34,8 @@ export const ArticleCard = ({article}) => {
             </Link>
         </div>
         <div className="article__btn">
-        <button className="edit__article">Edit</button>
+        <button className="edit__article" onClick={() => {
+          history.push("/articles/edit")}}>Edit</button>
         <button className="delete__article" onClick={() => {handleDeleteArticle()}}>Delete</button>
         </div>
         </section>

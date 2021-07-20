@@ -25,9 +25,9 @@ export const ArticleForm = () => {
     },[])
 
     const handleControlledInputChange = (event) => {
-        const newArticle = {...article }
-        newArticle[event.target.id] = event.target.value
-        setArticle(newArticle)
+        const saveNewArticle = {...article }
+        saveNewArticle[event.target.id] = event.target.value
+        setArticle(saveNewArticle)
     }
 
     const handleClickSaveArticle = (event) => {
@@ -35,14 +35,14 @@ export const ArticleForm = () => {
 
         const userId = parseInt(sessionStorage.getItem("nutshell_user"))
 
-        const newArticle = {
+        const saveNewArticle = {
             userId: userId,
             url: article.url,
             title: article.title,
             synopsis: article.synopsis,
             timestamp: new Date().toLocaleDateString()
         }
-        addArticle(newArticle)
+        addArticle(saveNewArticle)
         .then(() => history.push("/"))
     }
     return(

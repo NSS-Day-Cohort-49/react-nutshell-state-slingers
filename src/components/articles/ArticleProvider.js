@@ -33,7 +33,16 @@ export const ArticleProvider = (props) => {
             })
             .then(getArticles)
     }
-
+    const updateArticle = (articleObj) => {
+        return fetch(`http://localhost:8088/articles/${articleObj.id}`, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(articleObj)
+        })
+        .then(getArticles)
+      }
 
     // return a context provider which has 'articles' state, 
     // and getArticles function as keys. This will allow any 
@@ -41,7 +50,7 @@ export const ArticleProvider = (props) => {
     
     return (
         <ArticleContext.Provider value={{
-            articles, getArticles, addArticle, deleteArticle
+            articles, getArticles, addArticle, deleteArticle, updateArticle
         }}>
             {props.children}
         </ArticleContext.Provider>
