@@ -1,5 +1,8 @@
 import React from "react"
 import { Route } from "react-router-dom"
+import { EventProvider } from "./events/EventProvider"
+import { EventList } from "./events/EventList"
+import { EventForm } from "./events/EventForm"
 import { ArticleProvider } from "./articles/ArticleProvider"
 import { ArticleList } from "./articles/ArticleList"
 import { MessageProvider } from "./messages/MessageProvider";
@@ -50,13 +53,7 @@ export const ApplicationViews = () => {
         </UserProvider>
       </MessageProvider>
 
-      <Route path="/tasks">
         {/* Render the component for the user's tasks */}
-      </Route>
-      <Route path="/messages">
-        {/* Render the component for the messages */}
-      </Route>
-      
       <TaskProvider>
         <Route exact path="/tasks">
           <TaskList />
@@ -71,9 +68,21 @@ export const ApplicationViews = () => {
         </Route>
       </TaskProvider>
 
-      <Route path="/events">
         {/* Render the component for the user's events */}
-      </Route>
+        <FriendProvider>
+        <EventProvider>
+          <Route exact path="/events">
+            <EventList />
+          </Route>
+          <Route exact path="/events/edit/:eventId(\d+)">
+            <EventForm />
+          </Route>
+          <Route exact path="/events/add">
+            <EventForm />
+            <EventList />
+          </Route>
+        </EventProvider>
+        </FriendProvider>
     </>
   )
 }
