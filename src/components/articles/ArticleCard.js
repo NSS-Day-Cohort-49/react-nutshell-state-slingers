@@ -23,11 +23,12 @@ export const ArticleCard = ({article}) => {
     const dateDisplay = () => {
         return articleDate.toLocaleString()
     }
-   
-
+    
+    const currentUserId = parseInt(sessionStorage.getItem("nutshell_user"))
+    
     return(
         <>
-            <section className="article">
+            <section className={article.userId === currentUserId ? "article__user" : "article__buddy"}>
                 <h3 className="article__title">{ article.title }</h3>
             <div className="article__synopsis">
                 <Link to={{ pathname: article.url}} target={article.url}>
@@ -37,11 +38,12 @@ export const ArticleCard = ({article}) => {
             <div className="article__poster"> Posted By {article.user.name} on {dateDisplay()}
                 
             </div>
-            
+            {article.userId === currentUserId &&
             <div className="article__btn">
             <button className="edit__article" onClick={() => {history.push(`/articles/edit/${article.id}`)}}>Edit</button>
             <button className="delete__article" onClick={() => {handleDeleteArticle()}}>Delete</button>
             </div>
+            }
             </section>
         </>
     )
