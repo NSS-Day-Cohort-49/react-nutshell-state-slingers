@@ -193,14 +193,14 @@ const [isLoading, setIsLoading] = useState(true);
             <div className="form-group">
               <label htmlFor="name">Event name:</label>
               <input type="text" id="name" required autoFocus className="form-control" placeholder="Event name" value={event.name} onChange={handleControlledInputChange} 
-              defaultValue={event.name}/>
+              />
             </div>
           </fieldset>
           <fieldset>
             <div className="form-group">
               <label htmlFor="name">Where?:</label>
               <input type="text" id="location" required autoFocus className="form-control" placeholder="Event location" value={event.location} onChange={handleControlledInputChange} 
-              defaultValue={event.location}/>
+              />
             </div>
           </fieldset>
               {/* date & time input */}
@@ -210,14 +210,14 @@ const [isLoading, setIsLoading] = useState(true);
                 <div className="date">
                 <label htmlFor="date">Select a date:</label>
                 <input type="date" id="date" required className="form-control" value={(event.date)} onChange={handleControlledInputChange}
-                defaultValue={(new Date(event.date).getDate())} />
+                />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="time">
                 <label htmlFor="time">Select a time:</label>
                 <input type="time" id="time" required className="form-control" value={(event.time)} onChange={handleControlledInputChange}
-                defaultValue={(new Date(event.date).getTime())} />
+                />
                 </div>
             </fieldset>
             </div></div>

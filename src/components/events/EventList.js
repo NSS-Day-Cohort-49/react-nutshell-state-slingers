@@ -24,13 +24,15 @@ export const EventList = () => {
     return (
         <>
         <div className="events">
-            <h2 className="events__header">Events</h2>
+            <div className="events-header">
+            <h2 className="events__title">Events</h2>
             {/* Button conditionally renders based on pathname */}
         {history.location.pathname==="/events/add"? <div className='hidden'></div>:<button className='btn btn-primary'
         onClick={clickEvent => {
             clickEvent.preventDefault()
             handleClickAddEvent()}}
             >Add New Event</button>}
+            </div>
                 {/* Card function is called on events sorted by timestamp(soonest events called first) */}
                 {events.sort((a,b) => a.date > b.date ? -1: 1).map(event => {
                     const currentUserId = parseInt(sessionStorage.getItem("nutshell_user"))
