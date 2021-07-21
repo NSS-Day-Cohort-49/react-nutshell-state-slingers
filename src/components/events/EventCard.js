@@ -93,7 +93,7 @@ return(
                     </button>
                     {weatherView.showDayWeather===0 || getWeatherDay() >=5?<div className="hidden"></div>:<div className="weatherInfo">
                 <text className="weatherText">
-                <img src={getWeatherImg()}/>
+                <img src={getWeatherImg()}/> {weather?.daily[getWeatherDay()]?.weather[0].description}
                 {"\n"}
                 {weather?.daily[getWeatherDay()]?.temp?.max} Fahrenheit Max
                 {"\n"}
