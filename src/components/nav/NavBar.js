@@ -4,30 +4,6 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import { useHistory } from "react-router-dom";
 import "./NavBar.css";
 
-// export const NavBar = (props) => {
-//   return (
-//     <nav className="navbar bg-dark text-white flex-md-nowrap p-0 shadow">
-
-//       <ul className="nav nav-pills nav-fill">
-//         <li className="nav-item">
-//           <Link className="nav-link" to="/">Articles</Link>
-//         </li>
-//         <li className="nav-item">
-//           <Link className="nav-link" to="/friends">Friends</Link>
-//         </li>
-//         <li className="nav-item">
-//           <Link className="nav-link" to="/messages">Messages</Link>
-//         </li>
-//         <li className="nav-item">
-//           <Link className="nav-link" to="/tasks">Tasks</Link>
-//         </li>
-//         <li className="nav-item">
-//           <Link className="nav-link" to="/events">Events</Link>
-//         </li>
-//       </ul>
-//     </nav>
-//   )
-// }
 
 export const NavBar = (props) => {
 
@@ -53,6 +29,7 @@ export const NavBar = (props) => {
   return (
     <nav className="navbar">
       <ul className="navbar">
+          <img className="logo navbar__item" src="./images/logo.PNG"/>
           <li className={`navbar__item ${checkNavState("home")}`}
               onClick={() => setIsActive("home")}>
               <Link className="navbar__link" to="/">Articles</Link>

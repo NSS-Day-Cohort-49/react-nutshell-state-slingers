@@ -1,0 +1,89 @@
+.event {
+      margin: 1em;
+      padding: 1em;
+      border: 1px solid goldenrod;
+      background-color: #ffe7dc;
+      
+  }
+.event__header{
+    display:flex;
+}
+.event-header{
+    display:flex;
+}
+.btn-btn-hide {
+    display:none;
+}
+.btn {
+    margin:0.7em
+}
+.events-header{
+    display:flex;
+    text-align: center;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    font-size: 35px;
+    justify-content: center;
+}
+
+.events__title {
+    margin-right: 2em;
+}
+
+.weatherButton{
+ margin-top:-1em;
+}
+.btn-delete{
+font-size: 0.75rem;
+color: #fff;
+background-color: #007bff;
+border-color: #007bff;
+margin: 0.2rem;
+}
+.btn-weather{
+  
+        font-size: 0.75rem;
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+        margin: 0.2rem;
+        
+}
+
+.btn-edit{
+font-size: 0.75rem;
+margin: 0.2rem;
+color: #fff;
+background-color: #007bff;
+border-color: #007bff;
+}
+
+.event h3 {
+    font-size: 20px;
+    font-weight:300;
+    
+}
+.event__friend {
+    background-color: cornsilk;
+    margin: 1em;
+    padding: 1em;
+    border: 1px solid goldenrod;
+    font-style:italic;
+}
+.event__soonest {
+    background-color: #ffe990;
+    margin: 1em;
+    padding: 1em;
+    border: 1px solid goldenrod;
+    font-weight:1000;
+    
+}
+.event__soonestMine{
+    background-color: #ffb390;
+    margin: 1em;
+    padding: 1em;
+    border: 3px solid goldenrod;
+}
+.event__details {
+    font-weight:300
+}
