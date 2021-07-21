@@ -1,9 +1,10 @@
 /* Created by: Holly | Purpose: Styling of Article Elements */
 
 .articleHeader {
-    font-size: 50px;
-    margin-left: 50px;  
-    margin-top: 40px;
+    text-align: center;
+      margin-top: 2em;
+      margin-bottom: 2em;
+      font-size: 35px;
 }
 .articleForm {
     flex-basis: 90%;
