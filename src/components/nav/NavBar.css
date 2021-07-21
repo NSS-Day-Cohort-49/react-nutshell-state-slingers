@@ -36,4 +36,9 @@
     height: 100px;
     mix-blend-mode: multiply;
     cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+
+.logo:hover {
+    transform: scale(1.1);
 }
