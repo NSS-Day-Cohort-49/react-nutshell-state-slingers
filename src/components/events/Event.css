@@ -5,7 +5,10 @@
       background-color: #ffe7dc;
       
   }
-.events__header{
+.event__header{
+    display:flex;
+}
+.event-header{
     display:flex;
 }
 .btn-btn-hide {
@@ -13,6 +16,12 @@
 }
 .btn {
     margin:0.7em
+}
+.events-header{
+    display:flex;
+}
+.weatherButton{
+ margin-top:-1em;
 }
 .btn-delete{
 font-size: 0.75rem;
@@ -41,20 +50,22 @@ border-color: #007bff;
 
 .event h3 {
     font-size: 20px;
-    font-weight:700;
+    font-weight:300;
+    
 }
 .event__friend {
     background-color: cornsilk;
     margin: 1em;
     padding: 1em;
     border: 1px solid goldenrod;
-    
+    font-style:italic;
 }
 .event__soonest {
     background-color: #ffe990;
     margin: 1em;
     padding: 1em;
     border: 1px solid goldenrod;
+    font-weight:1000;
     
 }
 .event__soonestMine{
@@ -62,4 +73,7 @@ border-color: #007bff;
     margin: 1em;
     padding: 1em;
     border: 3px solid goldenrod;
+}
+.event__details {
+    font-weight:300
 }

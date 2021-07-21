@@ -10,7 +10,6 @@ export const EventList = () => {
 
     const [weatherView, setWeatherView] = useState({
         showCurrentWeather:0,
-        showDayWeather: 0,
       });
 
     const history = useHistory()
@@ -60,6 +59,7 @@ const currentWeatherImg = `http://openweathermap.org/img/wn/${weather?.current?.
             handleCurrentWeatherClick()}}>
             {weatherView.showCurrentWeather===1? "Hide Weather" : "Show Weather"}
             </button>}
+                </div>
             {weatherView.showCurrentWeather===0? <div className='hidden'></div>:<div className="weatherInfo"> 
             <button className="btn btn-primary" onClick={clickEvent => {
                     handleCurrentWeatherClick()}}>
@@ -82,10 +82,9 @@ const currentWeatherImg = `http://openweathermap.org/img/wn/${weather?.current?.
                     //Criteria for calling card: Check if event is posted by current user or one of user's friends
                     if (event.userId === currentUserId || friends.find(friend => friend.userId === currentUserId && friend.buddyId === event.userId))
                     {
-                    return <EventCard key={event.id} event={event} />
+                    return <EventCard key={event.id} event={event} weather={weather}/>
                     }
                 })}
-        </div>
         </div>
         </>
     )}

@@ -16,7 +16,7 @@ export const EventProvider = (props) => {
     }
 
     const getWeather = () => {
-        return fetch("https://api.openweathermap.org/data/2.5/onecall?lat=36.1627&lon=-86.7816&exclude=minutely,hourly,alerts&units=imperial&appid=2424360929d6559f4c82f4c5f8871343")
+        return fetch("https://api.openweathermap.org/data/2.5/onecall?lat=36.1627&lon=-86.7816&exclude=minutely,hourly,alerts&units=imperial&appid=07a57064529c1b28e333da353b192c35")
         .then(res => res.json())
         .then(setWeather)
     }
