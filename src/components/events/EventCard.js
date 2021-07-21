@@ -7,7 +7,7 @@ const formatDate = (date) => {
     return newDate
 }
 export const EventCard = ({ event }) => (
-    <section className="event">
+    <section className={event.userId === parseInt(sessionStorage.getItem("nutshell_user")) ? "event" : "event__friend"}>
         <h3 className="event__name">
             {event?.user?.name}'s {event?.name}
         </h3>
