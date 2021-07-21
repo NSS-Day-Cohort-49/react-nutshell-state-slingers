@@ -21,19 +21,24 @@ export const ApplicationViews = () => {
     <>
       <UserProvider>
       <FriendProvider>
+      <ArticleProvider>
           {/* Render the component for list of friends */}
         <Route path="/friends">
           <FriendList />
           <FriendForm />
         </Route>
 
-      <ArticleProvider>
         {/* Render the component for news articles */}
           <Route exact path="/">
             <ArticleList />
           </Route>
+
           <Route exact path="/articles/create">
             <ArticleForm />
+          </Route>
+
+          <Route path="/articles/edit/:articleId(\d+)">
+              <ArticleForm />
           </Route>
       </ArticleProvider>
       </FriendProvider>
@@ -53,7 +58,12 @@ export const ApplicationViews = () => {
         <Route exact path="/tasks">
           <TaskList />
         </Route>
+
         <Route exact path="/tasks/create">
+          <TaskForm />
+        </Route>
+
+        <Route exact path="/tasks/edit/:taskId(\d+)">
           <TaskForm />
         </Route>
       </TaskProvider>
