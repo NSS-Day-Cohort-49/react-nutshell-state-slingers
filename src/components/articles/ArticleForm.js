@@ -85,6 +85,11 @@ export const ArticleForm = () => {
             }
         }
       }
+      const handleCancelArticle = (event) =>{
+          event.preventDefault()
+          history.push("/")
+
+      }
       
     return(
         <form className="articleForm">
@@ -109,10 +114,14 @@ export const ArticleForm = () => {
         </fieldset>
         
         
-        
+        <div className="articleFormBtn">
         <button className="save__btn__article" onClick={handleClickSaveArticle}>
           Save Article
             </button>
+        <button className="cancel__btn__article" onClick={handleCancelArticle}>
+          Cancel
+            </button>
+        </div>
       </form>
     )
 } 

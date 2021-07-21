@@ -5,7 +5,7 @@ import "./Login.css"
 
 export const Register = () => {
 
-    const [registerUser, setRegisterUser] = useState({ firstName: "", lastName: "", email: "" })
+    const [registerUser, setRegisterUser] = useState({ firstName: "", lastName: "", email: "", username: "" })
     const [conflictDialog, setConflictDialog] = useState(false)
 
     const history = useHistory()
@@ -37,7 +37,8 @@ export const Register = () => {
                         },
                         body: JSON.stringify({
                             email: registerUser.email,
-                            name: `${registerUser.firstName} ${registerUser.lastName}`
+                            name: `${registerUser.firstName} ${registerUser.lastName}`,
+                            username: registerUser.username
                         })
                     })
                         .then(res => res.json())
@@ -73,6 +74,10 @@ export const Register = () => {
                 <fieldset>
                     <label htmlFor="lastName"> Last Name </label>
                     <input type="text" name="lastName" id="lastName" className="form-control" placeholder="Last name" required value={registerUser.lastName} onChange={handleInputChange} />
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="inputUsername"> Username </label>
+                    <input type="username" name="username" id="username" className="form-control" placeholder="username" required value={registerUser.username} onChange={handleInputChange} />
                 </fieldset>
                 <fieldset>
                     <label htmlFor="inputEmail"> Email address </label>
