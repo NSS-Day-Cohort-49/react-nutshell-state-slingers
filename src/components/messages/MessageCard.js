@@ -12,8 +12,8 @@ import { useHistory} from "react-router-dom";
 
 export const MessageCard = ({ message, classProp, msgButProp }) => {
 
-    const { deleteMessage, updateMessage, getMessages, messages } = useContext(MessageContext)
-    const { users, getUsers } = useContext(UserContext)
+    const { deleteMessage, updateMessage, getMessages } = useContext(MessageContext)
+    const { getUsers } = useContext(UserContext)
     const { friends, getFriends, addFriend} = useContext(FriendContext)
 
 
@@ -48,6 +48,7 @@ export const MessageCard = ({ message, classProp, msgButProp }) => {
     //Initial state of updated message object:
     const [updatedMessage, setUpdatedMessage] = useState({
         id: message.id,
+        recipientId: message.recipientId,
         userId: parseInt(sessionStorage.getItem("nutshell_user")),
         body: "",
         isPrivate: false
@@ -68,7 +69,6 @@ export const MessageCard = ({ message, classProp, msgButProp }) => {
 
     //Edit message function:
     const saveEditMessage = () => {
-        console.log("updated message", updatedMessage.body.length, 'message', message);
         if (updatedMessage.body.length === 0) {
             updatedMessage.body = message.body
                 updateMessage(updatedMessage);
