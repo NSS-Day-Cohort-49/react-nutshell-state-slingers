@@ -93,12 +93,12 @@ const [isLoading, setIsLoading] = useState(true);
                     const timeParts = dateTimeParts[1].split(':')
                     const dateParts = dateTimeParts[0].split('-')
                     
-                    const date = new Date(dateParts[0], parseInt(dateParts[1], 10) - 1, dateParts[2], timeParts[0], timeParts[1]);
+                    const eventDate = new Date(dateParts[0], parseInt(dateParts[1], 10) - 1, dateParts[2], timeParts[0], timeParts[1]);
                     
                     const newEvent = {
                         name: event.name,
                         //Convert date object into timestamp for storage
-                        date: event.date.getTime(),
+                        date: eventDate.getTime(),
                         location: event.location,
                         userId: userId
                     }
@@ -107,6 +107,10 @@ const [isLoading, setIsLoading] = useState(true);
                     .then(() => history.push("/events"))
                 }
             }   
+        }
+
+        const handleClickCancel = () => {
+            history.push(history.push(`/events`))
         }
         //Formats timestamp to date HTML input to set default value of field during edit
         const formatDateInput = (date) => {
@@ -160,6 +164,7 @@ const [isLoading, setIsLoading] = useState(true);
                 </div>
             </fieldset>
             </div></div>
+            <div className="btns">
             <button className="btn btn-primary"
             disabled={isLoading}
             onClick={clickEvent => {
@@ -168,6 +173,14 @@ const [isLoading, setIsLoading] = useState(true);
             }}>
                 { eventId ? "Save Event" : "Create Event" }
             </button>
+            <button className={history.location.pathname==="/events/add"? "btn btn-primary":"btn btn-hide"}
+            onClick={clickEvent => {
+                clickEvent.preventDefault()
+                handleClickCancel()
+            }}>
+                Cancel
+            </button>
+            </div>
         </form>
     </>
         )
@@ -196,18 +209,19 @@ const [isLoading, setIsLoading] = useState(true);
             <fieldset>
                 <div className="date">
                 <label htmlFor="date">Select a date:</label>
-                <input type="date" id="date" required className="form-control" value={formatDateInput(event.date)} onChange={handleControlledInputChange}
+                <input type="date" id="date" required className="form-control" value={(event.date)} onChange={handleControlledInputChange}
                 defaultValue={(new Date(event.date).getDate())} />
                 </div>
             </fieldset>
             <fieldset>
                 <div className="time">
                 <label htmlFor="time">Select a time:</label>
-                <input type="time" id="time" required className="form-control" value={formatTimeInput(event.date)} onChange={handleControlledInputChange}
+                <input type="time" id="time" required className="form-control" value={(event.time)} onChange={handleControlledInputChange}
                 defaultValue={(new Date(event.date).getTime())} />
                 </div>
             </fieldset>
             </div></div>
+        <div className="btns">
           <button className="btn btn-primary"
           disabled={isLoading}
           onClick={clickEvent => {
@@ -216,6 +230,14 @@ const [isLoading, setIsLoading] = useState(true);
           }}>
               { eventId ? "Save Event" : "Create Event" }
             </button>
+            <button className={history.location.pathname==="/events/add"? "btn btn-primary":"btn btn-hide"}
+            onClick={clickEvent => {
+                clickEvent.preventDefault()
+                handleClickCancel()
+            }}>
+                Cancel
+            </button>
+            </div>
         </form>
       )
 }
