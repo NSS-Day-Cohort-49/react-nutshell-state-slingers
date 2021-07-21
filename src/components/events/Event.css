@@ -19,7 +19,17 @@
 }
 .events-header{
     display:flex;
+    text-align: center;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    font-size: 35px;
+    justify-content: center;
 }
+
+.events__title {
+    margin-right: 2em;
+}
+
 .weatherButton{
  margin-top:-1em;
 }
