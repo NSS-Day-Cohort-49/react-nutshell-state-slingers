@@ -10,3 +10,10 @@
       padding: 1em;
       border: 1px solid goldenrod;
   }
+
+  .friends__header {
+      text-align: center;
+      margin-top: 2em;
+      margin-bottom: 2em;
+      font-size: 35px;
+  }
