@@ -32,11 +32,13 @@
 }
 
 .logo {
-    width: 120px;
-    height: 100px;
+    width: 100px;
+    height: 70px;
     mix-blend-mode: multiply;
     cursor: pointer;
     transition: all .2s ease-in-out;
+    margin-right: 2em;
+    margin-left: 3em;
 }
 
 .logo:hover {
