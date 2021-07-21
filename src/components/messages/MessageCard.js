@@ -36,7 +36,7 @@ export const MessageCard = ({ message, classProp, msgButProp }) => {
       .then(() => {
         history.push("/messages")
       })
-      alert("Message has been deleted! 👍")
+    //   alert("Message has been deleted! 👍")
     };
 
 
@@ -73,16 +73,16 @@ export const MessageCard = ({ message, classProp, msgButProp }) => {
             updatedMessage.body = message.body
                 updateMessage(updatedMessage);
                 setUneditedMessage(false);
-                alert("You cannot save an empty message! 🙅");
+                // alert("You cannot save an empty message! 🙅");
         } else {
             if (updatedMessage.body === message.body) {
                 updateMessage(updatedMessage);
                 setUneditedMessage(false);
-                alert("You cannot save an empty message! 🙅");
+                // alert("You cannot save an empty message! 🙅");
             } else {
                 updateMessage(updatedMessage);
                 setUneditedMessage(false);
-                alert("Message Updated! 💌");
+                // alert("Message Updated! 💌");
             }
         }
     };
@@ -111,7 +111,7 @@ export const MessageCard = ({ message, classProp, msgButProp }) => {
                 buddyId: message.userId,
                 userId: parseInt(sessionStorage.getItem("nutshell_user"))
             };
-            alert("Are you sure you want to add user to your friend list? There's no turning back! 😅")
+            alert("Are you sure you want to add user to your friend list? 😀")
             addFriend(newFriend);
             alert("User added as a friend! 😊")
         }; 

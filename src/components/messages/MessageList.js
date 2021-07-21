@@ -18,7 +18,7 @@ export const MessageList = () => {
     const { users } = useContext(UserContext);
 
 
-    useEffect(()=>{
+    useEffect(() => {
         console.log("MessageList: useEffect - getMessages, Initial render before data");
         getMessages()
     }, []);
@@ -101,8 +101,7 @@ export const MessageList = () => {
             alert("Your message cannot be empty! 🙅")
         } else {
             message.userId = parseInt(sessionStorage.getItem("nutshell_user"));
-            addMessage(message);
-            alert("Message has been sent! 😀");
+            addMessage(message)
      
             let newMessage = { ...message }
             // because the event attached to the send message image is a click event,  we are able to get the sibling of the event's target

@@ -3,6 +3,7 @@
     flex-wrap: nowrap;
     justify-content: space-evenly;
     background-color: rgb(158, 191, 199);
+    height: 50%;
 }
   
 .navbar__item {
@@ -28,4 +29,11 @@
 
 .navbar__link:hover {
     color: rgb(50, 146, 224);
+}
+
+.logo {
+    width: 120px;
+    height: 100px;
+    mix-blend-mode: multiply;
+    cursor: pointer;
 }
