@@ -3,7 +3,6 @@ import { Route } from "react-router-dom"
 import { EventProvider } from "./events/EventProvider"
 import { EventList } from "./events/EventList"
 import { EventForm } from "./events/EventForm"
-import { EventCard } from "./events/EventCard"
 import { ArticleProvider } from "./articles/ArticleProvider"
 import { ArticleList } from "./articles/ArticleList"
 import { MessageProvider } from "./messages/MessageProvider";

@@ -1,4 +1,4 @@
-//Built by Michael Trevino. This module displays event cards as HTML.
+//Built by Michael Trevino. This module displays event cards as HTML and provides affordance for adding events.
 import React, { useContext, useEffect } from "react"
 import { EventContext } from "./EventProvider"
 import { EventCard } from "./EventCard"

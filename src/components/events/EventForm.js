@@ -108,7 +108,7 @@ const [isLoading, setIsLoading] = useState(true);
                 }
             }   
         }
-
+        //Reroute to list page on cancel
         const handleClickCancel = () => {
             history.push(history.push(`/events`))
         }
@@ -124,6 +124,7 @@ const [isLoading, setIsLoading] = useState(true);
             const timeInput = `${dateObj.getHours().toString().padStart(2, '0')}:${dateObj.getMinutes().toString().padStart(2, '0')}`
             return timeInput
         }
+        // Conditional render for edit page
         if (eventId){
             return (
                 <>
@@ -146,7 +147,7 @@ const [isLoading, setIsLoading] = useState(true);
                 defaultValue={event.location}/>
             </div>
             </fieldset>
-                {/* date & time input */}
+                {/* date & time input. millisecond timestamp is formatted into date & time for default input fields*/}
             <div className="form-group">
             <div className="dateTime">
             <fieldset>
@@ -173,6 +174,7 @@ const [isLoading, setIsLoading] = useState(true);
             }}>
                 { eventId ? "Save Event" : "Create Event" }
             </button>
+            {/* Cancel button available if adding an event */}
             <button className={history.location.pathname==="/events/add"? "btn btn-primary":"btn btn-hide"}
             onClick={clickEvent => {
                 clickEvent.preventDefault()
@@ -185,6 +187,7 @@ const [isLoading, setIsLoading] = useState(true);
     </>
         )
     }
+    // Conditional render for add event page
     else return (   
 
         <form className="eventForm">
@@ -203,7 +206,7 @@ const [isLoading, setIsLoading] = useState(true);
               />
             </div>
           </fieldset>
-              {/* date & time input */}
+             {/* date & time input. millisecond timestamp is formatted into date & time for default input fields*/}
             <div className="form-group">
             <div className="dateTime">
             <fieldset>
@@ -230,6 +233,7 @@ const [isLoading, setIsLoading] = useState(true);
           }}>
               { eventId ? "Save Event" : "Create Event" }
             </button>
+            {/* Cancel button available if on add page */}
             <button className={history.location.pathname==="/events/add"? "btn btn-primary":"btn btn-hide"}
             onClick={clickEvent => {
                 clickEvent.preventDefault()
