@@ -5,7 +5,9 @@
     margin-left: 50px;  
     margin-top: 40px;
 }
-
+.articleForm {
+    flex-basis: 90%;
+}
 .articles {
     display: flex;
     flex-wrap: wrap;
@@ -62,12 +64,28 @@
     background-color:  #5bb1c7;   
 }
 
+.cancel__btn__article {
+    background-color: #5bb1c7;
+    border-radius: 50px;
+    border: 1px solid black;
+    margin-left: .5em;
+}
+.cancel__btn__article:hover {
+    border: 2px solid rgb(48, 126, 216);
+    color: whitesmoke;
+    background-color:  #5bb1c7;
+       
+}
 .article__btn{
     display: flex;
     justify-content: flex-end;
     margin-right: 2em;
 }
-
+.articleFormBtn{
+    display: flex;
+    justify-content: center;
+    
+}
 .delete__article {
     background-color: #5bb1c7;
     border-radius: 50px;
@@ -87,7 +105,7 @@
     background-color: #5bb1c7;
     border-radius: 50px;
     border: 1px solid black;
-    ;
+    
 }
 
 .edit__article:hover {
