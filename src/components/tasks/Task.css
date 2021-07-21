@@ -1,7 +1,7 @@
 .task-header {
   display: flex;
   justify-content: space-evenly;
-  text-align: center;
+  flex-basis: 100%;
   margin-top: 2em;
   margin-bottom: 2em;
   font-size: 35px;
