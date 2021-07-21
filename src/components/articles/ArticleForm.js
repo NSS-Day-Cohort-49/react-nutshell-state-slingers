@@ -50,7 +50,7 @@ export const ArticleForm = () => {
             url: article.url,
             title: article.title,
             synopsis: article.synopsis,
-            timestamp: new Date()
+            timestamp: Date.now()
         }
         addArticle(newArticle)
         .then(() => history.push("/"))
@@ -64,7 +64,7 @@ export const ArticleForm = () => {
           url: article.url,
           title: article.title,
           synopsis: article.synopsis,
-          timestamp: new Date()
+          timestamp: Date.now()
         })
         .then(() => history.push("/"))
       }
@@ -72,9 +72,9 @@ export const ArticleForm = () => {
       const handleClickSaveArticle = (event) => {
         event.preventDefault()
 
-        if (article.url === null || article.title === null || article.synopsis === null) {
-            window.alert("Please complete all fields")
-        } else {
+        if (article.url === "" || article.title === "" || article.synopsis === "") {
+            window.alert("Please complete all forms")
+            } else {
             setIsLoading(true);
 
             if (articleId) {

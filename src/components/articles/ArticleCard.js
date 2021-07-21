@@ -5,10 +5,9 @@ import "./Article.css"
 import { Link } from "react-router-dom"
 import { ArticleContext } from "./ArticleProvider";
 import { useHistory } from "react-router-dom";
-import { UserContext } from "../users/UserProvider";
 
 
-export const ArticleCard = ({article, user}) => { 
+export const ArticleCard = ({article}) => { 
     const { deleteArticle } = useContext(ArticleContext)
     const history = useHistory();
 
@@ -19,6 +18,13 @@ export const ArticleCard = ({article, user}) => {
         })
     };
 
+    const articleDate = new Date (article.timestamp)
+    
+    const dateDisplay = () => {
+        return articleDate.toLocaleString()
+    }
+   
+
     return(
         <>
             <section className="article">
@@ -28,7 +34,7 @@ export const ArticleCard = ({article, user}) => {
                 {article.synopsis}
                 </Link>
             </div>
-            <div className="article__poster"> Posted By {article.user.name} on {article.timestamp}
+            <div className="article__poster"> Posted By {article.user.name} on {dateDisplay()}
                 
             </div>
             

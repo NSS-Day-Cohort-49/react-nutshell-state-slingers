@@ -18,9 +18,15 @@ export const ArticleList = () => {
     
     // useEffect - reach out to get `ArticlesList` upon initial render
     useEffect(() => {
-        getUsers()
-        .then(getArticles)
+        getArticles()  
+        .then(getUsers)
     },[]) 
+    
+   
+
+    const sortArticles = [...articles ]
+    
+    const sortedArticles = sortArticles.sort((a, b) => b.timestamp - a.timestamp)   
    
     return (
         <>
@@ -31,7 +37,7 @@ export const ArticleList = () => {
             </button>
         </div>
         <div className="articles">
-            {articles.map(article => {
+            {sortedArticles.map(article => {
                 if(article.userId === parseInt(sessionStorage.getItem("nutshell_user"))) {
                 
                     return <ArticleCard key={article.id} article={article} />
