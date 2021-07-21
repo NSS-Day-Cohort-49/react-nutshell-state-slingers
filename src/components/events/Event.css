@@ -21,6 +21,15 @@ background-color: #007bff;
 border-color: #007bff;
 margin: 0.2rem;
 }
+.btn-weather{
+  
+        font-size: 0.75rem;
+        color: #fff;
+        background-color: #007bff;
+        border-color: #007bff;
+        margin: 0.2rem;
+        
+}
 
 .btn-edit{
 font-size: 0.75rem;

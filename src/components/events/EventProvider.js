@@ -7,11 +7,18 @@ export const EventContext = createContext()
 export const EventProvider = (props) => {
 
     const [events, setEvents] = useState([])
+    const [ weather, setWeather ] = useState([])
 
     const getEvents = () => {
         return fetch("http://localhost:8088/events?_expand=user")
         .then(res => res.json())
         .then(setEvents)
+    }
+
+    const getWeather = () => {
+        return fetch("https://api.openweathermap.org/data/2.5/onecall?lat=36.1627&lon=-86.7816&exclude=minutely,hourly,alerts&units=imperial&appid=2424360929d6559f4c82f4c5f8871343")
+        .then(res => res.json())
+        .then(setWeather)
     }
 
     const addEvent = eventObj => {
@@ -50,7 +57,7 @@ export const EventProvider = (props) => {
 
     return (
         <EventContext.Provider value={{
-            events, getEvents, addEvent, deleteEvent, updateEvent, getEventById
+            events, getEvents, addEvent, deleteEvent, updateEvent, getEventById, weather, getWeather
         }}>
             {props.children}
         </EventContext.Provider>
