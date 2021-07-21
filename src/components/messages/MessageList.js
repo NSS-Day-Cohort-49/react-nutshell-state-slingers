@@ -162,7 +162,7 @@ export const MessageList = () => {
                 </>
                  :
                  <>
-                    <label className="label" htmlFor="messageContent">New Message:</label> 
+                    <label className="label" htmlFor="messageContent">Public Message:</label> 
                     <div  contentEditable={true} suppressContentEditableWarning={true} id="body" type="text" name="messageContent" className="content" rows="1" cols="60" placeholder="Type Public Message..." onInput={(event) => {handleControlledInputChange(event)}} value={message.body}>
                         <p></p>
                     </div>
