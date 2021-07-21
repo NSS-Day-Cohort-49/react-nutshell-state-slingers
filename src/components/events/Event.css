@@ -2,6 +2,7 @@
       margin: 1em;
       padding: 1em;
       border: 1px solid goldenrod;
+      background-color: #ffe7dc;
       
   }
 .event h3 {
@@ -14,4 +15,17 @@
     padding: 1em;
     border: 1px solid goldenrod;
     
+}
+.event__soonest {
+    background-color: #ffe990;
+    margin: 1em;
+    padding: 1em;
+    border: 1px solid goldenrod;
+    
+}
+.event__soonestMine{
+    background-color: #ffb390;
+    margin: 1em;
+    padding: 1em;
+    border: 1px solid goldenrod;
 }

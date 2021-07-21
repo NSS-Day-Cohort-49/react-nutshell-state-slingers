@@ -2,7 +2,7 @@
 import React, { useContext, useEffect } from "react"
 import { EventContext } from "./EventProvider"
 import { EventCard } from "./EventCard"
-import { FriendContext, FriendProvider } from "../friends/FriendProvider"
+import { FriendContext } from "../friends/FriendProvider"
 import "./Event.css"
 
 export const EventList = () => {
@@ -18,7 +18,7 @@ export const EventList = () => {
         <>
         <div className="events">
             <h2 className="events__header">Events</h2>
-                {events.map(event => {
+                {events.sort((a,b) => a.date > b.date ? -1: 1).map(event => {
                     const currentUserId = parseInt(sessionStorage.getItem("nutshell_user"))
                     //Check if event is posted by current user or one of user's friends
                     if (event.userId === currentUserId || friends.find(friend => friend.userId === currentUserId && friend.buddyId === event.userId))
