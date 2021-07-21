@@ -69,7 +69,7 @@ const getWeatherDay = () => {
     // To calculate the no. of days between two dates
     const Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
     //To display the final no. of days (result)
-    const abs = Math.abs(Difference_In_Days-1)
+    const abs = Math.abs(Difference_In_Days)
     return Math.floor(abs)
 }
 const getWeatherImg = () => {
@@ -86,12 +86,12 @@ return(
        <div className="event-header">
         <div className="event__header">
             {event?.user?.name}'s {event?.name}
-        {currentTimestamp-event.date >= 604800000? <div className='hidden'></div>:<div className="weatherButton">
+        {getWeatherDay() >=5? <div className='hidden'></div>:<div className="weatherButton">
         <button className="btn btn-primary" onClick={clickEvent => {
                     handleCurrentWeatherClick()}}>
                         {weatherView.showDayWeather===1? "Hide Weather" : "Show Weather"}
                     </button>
-                    {weatherView.showDayWeather===0 || getWeatherDay() >=7?<div className="hidden"></div>:<div className="weatherInfo">
+                    {weatherView.showDayWeather===0 || getWeatherDay() >=5?<div className="hidden"></div>:<div className="weatherInfo">
                 <text className="weatherText">
                 <img src={getWeatherImg()}/>
                 {"\n"}

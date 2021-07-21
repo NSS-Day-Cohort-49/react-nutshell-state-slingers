@@ -32,12 +32,10 @@ export const EventList = () => {
         if(weatherViewCopy.showCurrentWeather===0){
             weatherViewCopy.showCurrentWeather=1
             setWeatherView(weatherViewCopy)
-            
         }
         else if(weatherViewCopy.showCurrentWeather===1){
             weatherViewCopy.showCurrentWeather=0
             setWeatherView(weatherViewCopy)
-            
         }
     }
 const currentWeatherImg = `http://openweathermap.org/img/wn/${weather?.current?.weather[0].icon}@2x.png`
