@@ -65,12 +65,16 @@ const handleClickDeleteEvent = () => {
     
 const getWeatherDay = () => {
 
-    const Difference_In_Time = currentTimestamp - event.date;
+    const Difference_In_Time = event.date - currentTimestamp;
     // To calculate the no. of days between two dates
     const Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
     //To display the final no. of days (result)
-    const abs = Math.abs(Difference_In_Days)
-    return Math.floor(abs)
+    const floor = Math.floor(Difference_In_Days)
+    
+    if (floor < 0) {
+        return 10
+    }
+    else return floor
 }
 const getWeatherImg = () => {
     const currentWeatherImg = `http://openweathermap.org/img/wn/${weather?.daily[getWeatherDay()]?.weather[0].icon}@2x.png`
