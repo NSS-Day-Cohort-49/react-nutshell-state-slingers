@@ -20,7 +20,7 @@ export const FriendList = () => {
         <>
         <div className="friends">
             <h2 className="friends__header">Friends</h2>
-                {friends.map(friend=> {
+                {friends?.map(friend=> {
                     if (friend.userId === parseInt(sessionStorage.getItem("nutshell_user"))) {
                         //
                         const friendMatch = users.find(user => user.id === friend.buddyId)
