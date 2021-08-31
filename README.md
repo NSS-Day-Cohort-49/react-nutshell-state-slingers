@@ -20,7 +20,7 @@ cd react-nutshell-state-slingers
 
 Social Buzz is a web app built with the ReatJS library for organizing daily tasks, events, news article, friends, and chat messages.
 
-Following are examples of how the resources in your API should look once it is populated with data from the application.
+Following are examples of how the resources in your API should look once it is populated with data from the application & a preview of how the data looks in Social Buzz.
 
 ### Users
 
@@ -43,6 +43,7 @@ Following are examples of how the resources in your API should look once it is p
       "id": 1
     }
 ```
+![Friends Page](./public/images/friends.gif "Friends page preview")
 
 ### Messages
 
@@ -55,6 +56,7 @@ Following are examples of how the resources in your API should look once it is p
       "recipientId": null
     }
 ```
+![Message Page](./public/images/messages.gif "Message page preview")
 ### News Articles
 
 ```json
@@ -67,6 +69,7 @@ Following are examples of how the resources in your API should look once it is p
     "timestamp": "2/11/2021"
 }
 ```
+![Articles Page](./public/images/articles.gif "Articles page preview")
 
 ### Events
 
@@ -79,7 +82,7 @@ Following are examples of how the resources in your API should look once it is p
       "location": "Lingo Central"
     }
 ```
-
+![Events Page](./public/images/events.gif "Events page preview")
 ### Tasks
 
 ```json
@@ -92,5 +95,6 @@ Following are examples of how the resources in your API should look once it is p
       "completeDate": 0
     }
 ```
+![Tasks Page](./public/images/tasks.gif "Tasks page preview")
 
 ![entity relationship diagram](./public/images/socialBuzzERD.png "entity relationship diagram for Social Buzz")
