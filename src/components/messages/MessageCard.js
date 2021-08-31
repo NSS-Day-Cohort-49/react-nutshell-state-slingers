@@ -134,8 +134,8 @@ export const MessageCard = ({ message, classProp, msgButProp }) => {
                     }
                 </div>
                 <div className="message__div">
-                    <img className="message__senderPhoto" src={message.user.userPhoto}></img>
-                    <div className="message__sender" onClick={() => {saveNewFriend()}}>{ message.user.username }</div>
+                    <img className="message__senderPhoto" src={message?.user?.userPhoto}></img>
+                    <div className="message__sender" onClick={() => {saveNewFriend()}}>{ message?.user?.username }</div>
                 </div>
                 {messageInput} 
             </section>

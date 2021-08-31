@@ -35,7 +35,7 @@ export const ArticleCard = ({article}) => {
                 {article.synopsis}
                 </Link>
             </div>
-            <div className="article__poster"> Posted By {article.user.name} on {dateDisplay()}
+            <div className="article__poster"> Posted By {article?.user?.name} on {dateDisplay()}
                 
             </div>
             {article.userId === currentUserId &&
